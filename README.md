@@ -51,21 +51,60 @@ Inspired by http://jsforallof.us/2014/12/01/the-anatomy-of-a-simple-templating-e
 
 Syntax mimics the [Handlebars][handlebars] templating expression: `{{ contents }}` where `contents` represents what you'd like to replace when the template is rendered. Note that the amount whitespace between `contents` and the two braces doesn't matter. For example, the following are all valid expressions:
 - `{{contents}}`
-- `{{     contents}}`
-- `{{contents   }}`
-- `{{   contents     }}`
+- `{{&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;contents}}`
+- `{{contents&nbsp;&nbsp;&nbsp;}}`
+- `{{&nbsp;&nbsp;&nbsp;contents&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}`
 
-However, for the sake of readability I would recommend using no spaces on 1 space on either side.
+However, for the sake of readability I would recommend using no spaces (`{{contents`) _or_ 1 space on either side (`{{ contents }}`).
 
 ### Conditionals
 
-If you'd like to 
+You can conditionally show template contents by using a `if` condition with the following syntax:
+
+    ```html
+    {{ #if (condition) }}
+      <!-- this only renders if `condition` exists in the object the template is rendered with -->
+      <p>My conditional contents: {{ contents }}</p>
+    {{ /if }}
+    ```
+
+The arguments in the `#if` expression are expression contents that **must** exist for the body of the condition to be rendered. You can have multiple conditions separated by commas: `{{ #if (foo, bar, baz) }}`.
+
+For example, given the following template snippet
+
+    ```html
+    {{ #if (name, age) }}
+      <p>Hi my name is {{ name }} and I am {{ age }} years old.</p>
+    {{ /if }}
+    ```
+
+    rendered against the following data
+    ```javascript
+    {
+      name: "Paul",
+      age: 20
+    }
+    ```
+
+    will produce
+    ```html
+    <p>Hi my name is Paul and I am 20 years old.</p>
+    ```
+
+    however, rendered against data where `name` and/or `age` is not present
+    ```javascript
+    {
+      name: "Paul"
+    }
+    ```
+
+    the body of the `if` condition will not be rendered.
 
 ## Limitations & Restrictions
 
 Given the simple nature of the templating, there are 3 main limitations to consider:
 
-1. Nested `#if`s will not work. 
+1. Nested `#if`s will not work. Example:
 
     ```html
     {{ #if (some_condition) }}
@@ -83,7 +122,15 @@ Given the simple nature of the templating, there are 3 main limitations to consi
     {{ property.with.nested.contents }}
     ```
 
-3. HTML is escaped when it is inserted into the template.
+3. HTML (specifically &, <, and >) is escaped when it is inserted into the template. Example:
+
+    The expression `<p> {{ contents }} </p>` when rendered against
+    ```javascript
+    {
+      contents: "<my contents & stuff>"
+    }
+    ```
+    will produce `<p> &lt;contents &amp; stuff&gt;`.
 
 ## Contributing
 
