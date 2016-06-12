@@ -10,21 +10,29 @@ function templater(template) {
         regex = start + "[\\s\\S]+?" + end,
         // save a reference to the template so it can be restored at the end
         tmpl = template,
-        match, conditions, prop, meetsConditions;
+        match, conditions, meetsConditions;
+    
     // keep matching conditions until there are none
     while (match = new RegExp(regex, "ig").exec(template)) {
+      
       // assume it meets all conditions
       meetsConditions = true;
-      conditions = match[1].trim().replace(/\s+/g, " ").split(" ");
+      // remove all whitespace between conditions, split on commas
+      conditions = match[1].replace(/\s+/g, "").split(",");
       
+      // check each condition to see if it exists in the data
       for (var i = 0; i < conditions.length; i++) {
+        // if it doesn't, break out
         if (!data.hasOwnProperty(conditions[i])) {
           meetsConditions = false;
           break;
         }
       }
       
-      // check if the property exists
+      // DEBUG
+      console.log(match);
+      
+      // check if it meets the conditions
       if (!meetsConditions) {
         // wipe the #if, /if, and body if it doesn't
         template = template.split(match[0]).join("");
@@ -41,7 +49,7 @@ function templater(template) {
     }
     
     // loop through each property of the data
-    for (prop in data) {
+    for (var prop in data) {
       // create the regex to match the '{{ prop }}' format
       regex = "{{\\s*" + prop + "\\s*}}";
       // replace the instances in the template with the property value (escaping &, <, and > if necessary)
@@ -56,8 +64,6 @@ function templater(template) {
         return replaceTags[tag] || tag;
       }));
     }
-    
-    console.log(template);
     
     // set the template back to its original state (so it can be used again)
     var ret = template;
