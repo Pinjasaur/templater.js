@@ -1,14 +1,16 @@
 # templater.js
-A tiny & simple JavaScript templating engine.
+Simple JavaScript templating with a small<sup>1</sup> footprint.
+
+<sup>1</sup> < 1K after minification.
+
+Inspired by http://jsforallof.us/2014/12/01/the-anatomy-of-a-simple-templating-engine/ and http://krasimirtsonev.com/blog/article/Javascript-template-engine-in-just-20-line.
 
 ## TODO
 
-- more testing
-- set up gulp for minification, etc
-- beef up readme with usage, limitations, etc
-- create demo?
-
-inspired by: http://jsforallof.us/2014/12/01/the-anatomy-of-a-simple-templating-engine/ and http://krasimirtsonev.com/blog/article/Javascript-template-engine-in-just-20-line
+- [ ] more testing
+- [x] set up gulp for minification, etc
+- [ ] beef up readme with usage, limitations, etc
+- [ ] create demo?
 
 ## Usage
 
