@@ -1,5 +1,7 @@
 # templater.js
-Tiny & simple JavaScript templating.
+Simple JavaScript templating with a small<sup>1</sup> footprint.
+
+<sup>1</sup> < 1K after minification.
 
 Inspired by http://jsforallof.us/2014/12/01/the-anatomy-of-a-simple-templating-engine/ and http://krasimirtsonev.com/blog/article/Javascript-template-engine-in-just-20-line.
 
