@@ -1,15 +1,15 @@
 # templater.js
-Dead-simple JavaScript templating with a tiny<sup>1</sup> footprint. View the [website][homepage] for examples.
+Dead-simple JavaScript templating with a tiny<sup>1</sup> footprint. View the [website][homepage] for details & examples.
 
 Inspired by http://jsforallof.us/2014/12/01/the-anatomy-of-a-simple-templating-engine/ and http://krasimirtsonev.com/blog/article/Javascript-template-engine-in-just-20-line.
 
-<sup>1</sup> < 1K after minification.
+<sup>1</sup> < 1KB after minification.
 
 ## TODO
 
 - [ ] more testing
 - [x] set up gulp for minification, etc
-- [ ] beef up readme with usage, limitations, etc
+- [x] beef up readme with usage, limitations, etc
 - [ ] create demo?
 
 ## Quick Start
@@ -130,7 +130,7 @@ Given the simple nature of the templating, there are 3 main limitations to consi
       contents: "<my contents & stuff>"
     }
     ```
-    will produce `<p> &lt;contents &amp; stuff&gt;`.
+    will produce `<p> &lt;contents &amp; stuff&gt; </p>`.
 
 ## Contributing
 
