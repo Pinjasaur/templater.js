@@ -1,0 +1,29 @@
+{
+  "name": "templater.js",
+  "version": "1.0.0",
+  "description": "Minimal JavaScript templating.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Pinjasaur/templater.js.git"
+  },
+  "author": "Paul Esch-Laurent",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Pinjasaur/templater.js/issues"
+  },
+  "homepage": "https://github.com/Pinjasaur/templater.js#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-clean": "^0.3.2",
+    "gulp-header": "^1.8.2",
+    "gulp-jshint": "^2.0.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-strip-debug": "^1.1.0",
+    "gulp-uglify": "^1.5.3",
+    "jshint": "^2.9.2"
+  }
+}
