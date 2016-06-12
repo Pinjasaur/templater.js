@@ -29,9 +29,6 @@ function templater(template) {
         }
       }
       
-      // DEBUG
-      console.log(match);
-      
       // check if it meets the conditions
       if (!meetsConditions) {
         // wipe the #if, /if, and body if it doesn't
