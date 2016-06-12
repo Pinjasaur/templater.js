@@ -56,13 +56,13 @@ function templater(template) {
       // replace the instances in the template with the property value (escaping &, <, and > if necessary)
       template = template.replace(new RegExp(regex, "ig"), ("" + data[prop]).replace(/[&<>]/g, function(tag) {
         // replace &, <, or > if necessary
-        var replaceTags = {
+        var replacements = {
           "&": "&amp;",
           "<": "&lt;",
           ">": "&gt;"
         };
 
-        return replaceTags[tag] || tag;
+        return replacements[tag] || tag;
       }));
     }
     
