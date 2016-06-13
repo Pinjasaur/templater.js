@@ -1,3 +1,95 @@
-body {
-  background: pink;
+@import "normalize";
+@import "prism";
+
+$dark: #050505;
+$light: #F7F7F7;
+$highlight: #AC1515;
+
+html {
+  line-height: 1.5;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+header {
+  background: $highlight;
+  color: $dark;
+  text-align: center;
+
+  .headline {
+    font-size: 4em;
+    margin: 0;
+    padding: 1em 0 1em;
+  }
+
+  .tagline {
+    font-size: 2em;
+    margin: 0;
+    padding: 0 0 2em;
+  }
+
+  .btn {
+    text-decoration: none;
+    color: $dark;
+    padding: 0.6em;
+    font-weight: bold;
+    font-size: 1.2em;
+    border: 2px solid $dark;
+    border-radius: 4px;
+    margin: 0 0.4em 3em;
+    display: inline-block;
+
+    &:hover {
+      background: $dark;
+      color: $highlight;
+    }
+
+    + .btn {
+      margin-left: 6em;
+    }
+  }
+}
+
+main {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1em;
+
+  > * + * {
+    margin-top: 3em;
+  }
+}
+
+footer {
+  background: lighten($dark, 20%);
+  color: $light;
+  text-align: center;
+  padding: 3em;
+
+  a {
+    color: $light;
+
+    &:hover {
+      color: darken($light, 30%);
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  html {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  html {
+    font-size: 0.8rem;
+  }
+
+  .fork-me-ribbon {
+    display: none;
+  }
 }

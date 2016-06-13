@@ -3,9 +3,106 @@
   <head>
     <meta charset="UTF-8">
     <title>templater.js</title>
-
     <link rel="stylesheet" type="text/css" href="css/main.css">
+
+    <!-- Icons -->
+    <link rel="apple-touch-icon" sizes="57x57" href="/icons/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/icons/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/icons/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/icons/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/icons/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/icons/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/icons/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/icons/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon-180x180.png">
+    <link rel="icon" type="image/png" href="/icons/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/icons/android-chrome-192x192.png" sizes="192x192">
+    <link rel="icon" type="image/png" href="/icons/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="/icons/favicon-16x16.png" sizes="16x16">
+    <link rel="manifest" href="/icons/manifest.json">
+    <link rel="mask-icon" href="/icons/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="shortcut icon" href="/icons/favicon.ico">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="msapplication-TileImage" content="/icons/mstile-144x144.png">
+    <meta name="msapplication-config" content="/icons/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
   </head>
   <body>
+
+  <header>
+    <h1 class="headline">templater.js</h1>
+    <h3 class="tagline">Simple JavaScript <code>{{templating}}</code></h3>
+
+    <a href="#0" class="btn">Download Script &rarr;</a>
+    <strong>or</strong>
+    <a href="#0" class="btn">View on GitHub &rarr;</a>
+
+    <!-- Fork me on GitHub ribbon -->
+    <a href="https://github.com/Pinjasaur/templater.js" class="fork-me-ribbon"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+  </header>
+
+  <main>
+    <section>
+      <h2>tl;dr</h2>
+      <p><span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maiores ullam pariatur tenetur sequi nesciunt placeat voluptas optio rerum, accusantium nihil ipsum, qui soluta incidunt aut voluptatem reprehenderit laborum ratione. Harum.</span>
+      <span>Dolor iste ex culpa, harum architecto recusandae! Facilis harum ipsam iste eligendi labore, vitae deserunt sunt repudiandae a. Modi debitis quasi corporis reprehenderit nemo maxime aliquid ipsa illum ullam. Ratione!</span>
+      <span>Magnam dolorum cumque distinctio voluptas quo quis officiis. Quibusdam, quas est? Eum maiores porro corporis magnam, sapiente illum quia aliquid laudantium quod quam sunt minus nulla beatae nobis dolorem reprehenderit!</span>
+      <span>Optio tempore minus corporis, ipsum magnam molestias suscipit quae velit illo iusto, voluptates fuga, repudiandae cupiditate doloremque omnis debitis possimus! Alias, ullam. Cum vero nam, veritatis molestiae, quia distinctio reiciendis!</span></p>
+    </section>
+    <section class="language-markup">
+      <h2>Getting Started</h2>
+      <ol>
+        <li>Add the script to your HTML document:
+        <pre><code>&lt;script src="path/to/templater.min.js">&lt;/script></code></pre>
+        </li>
+        <li>Create the template you'd like to use:</li>
+        <pre><code>&lt;!-- by using a non-standard `type` the browser won't parse it -->
+&lt;script id="my-template" type="text/template">
+  &lt;h2>Hi, my name is {{ name }}.&lt;/h2>
+  &lt;p>I am {{ age }} years old and live in {{ location }}.&lt;/p>
+&lt;/script></code></pre>
+        <li>Parse the template against some data and render it to the DOM:
+        <pre class="language-js"><code>var template = templater(document.getElementById("my-template").innerHTML);
+
+document.body.insertAdjacentHTML("beforeend", template({
+  name: "John",
+  age: 27,
+  location: "The United States"
+});</code></pre>
+        </li>
+      </ol>
+    </section>
+    <section>
+      <h2>Syntax</h2>
+      <p><span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur, reprehenderit, veniam. In, adipisci tempore accusantium necessitatibus rerum et dolores deserunt assumenda amet veritatis facilis, quibusdam modi dolore architecto facere earum!</span>
+      <span>Maxime sit facere totam, molestias saepe hic, odio numquam sapiente cupiditate cumque consectetur qui corrupti aliquam quidem dicta repudiandae eligendi sunt exercitationem aut nihil, in doloribus. Dicta eos eius consequatur.</span>
+      <span>Sit voluptate a dolorem maxime animi dignissimos magni ex delectus est natus quas, quisquam cupiditate, fugiat facilis iure perferendis iste ipsa eius non dolore? Consequuntur minima eos vitae. Illo, aliquid.</span>
+      <span>Molestiae a aliquid illo velit ullam placeat ratione odio similique. Quam, at eos eaque accusantium quasi exercitationem natus doloremque. Laborum assumenda, aspernatur unde quod odit saepe fugit voluptatem, minus repudiandae?</span></p>
+    </section>
+    <section>
+      <h2>Limitations</h2>
+      <p><span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta porro, eos. Nemo vero ratione, maiores natus obcaecati totam cupiditate laboriosam consequuntur, aperiam quasi neque cumque, suscipit quos est molestias aut.</span>
+      <span>Delectus, ad quos veritatis nostrum praesentium similique molestias, aut repudiandae quod doloremque fugiat cumque mollitia velit! Debitis repellendus praesentium officiis earum, laboriosam adipisci quia dolor maxime quisquam pariatur explicabo, at.</span>
+      <span>Ex soluta dolorum modi repellendus harum officiis blanditiis? Sequi id, eaque possimus maiores dolores distinctio ducimus officia atque ad voluptas dolore error inventore odit repellat incidunt architecto quo ut amet!</span>
+      <span>Et beatae officiis, mollitia, quasi quisquam cumque, asperiores natus nostrum hic a id quia nam ex doloribus, iure nesciunt accusamus libero. Minima ullam repellendus illo laborum exercitationem est assumenda atque!</span></p>
+    </section>
+  </main>
+
+  <footer>
+    A thing by <a href="http://github.com/pinjasaur">Paul</a>.
+  </footer>
+
+  <script src="js/prism.js"></script>
+  
+  <!-- Google Analytics -->
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-76467706-2', 'auto');
+  ga('send', 'pageview');
+  </script>
   </body>
 </html>
