@@ -1,0 +1,19 @@
+{
+  "name": "templater.js-gh-pages-site",
+  "version": "1.0.0",
+  "description": "GH Pages site for templater.js",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Pinjasaur/templater.js.git"
+  },
+  "author": "Paul Esch-Laurent",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Pinjasaur/templater.js/issues"
+  },
+  "homepage": "https://github.com/Pinjasaur/templater.js#readme"
+}
