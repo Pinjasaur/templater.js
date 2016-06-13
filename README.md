@@ -50,10 +50,10 @@ Inspired by http://jsforallof.us/2014/12/01/the-anatomy-of-a-simple-templating-e
 ### Expressions
 
 Syntax mimics the [Handlebars][handlebars] templating expression: `{{ contents }}` where `contents` represents what you'd like to replace when the template is rendered. Note that the amount whitespace between `contents` and the two braces doesn't matter. For example, the following are all valid expressions:
-- `{{contents}}`
-- `{{     contents}}`
-- `{{contents   }}`
-- `{{   contents      }`
+- <code>{{contents}}</code>
+- <code>{{     contents}}</code>
+- <code>{{contents   }}</code>
+- <code>{{   contents      }</code>
 
 However, for the sake of readability I would recommend using no spaces (`{{contents`) _or_ 1 space on either side (`{{ contents }}`).
 
