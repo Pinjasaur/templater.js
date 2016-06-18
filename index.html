@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>templater.js</title>
     
-
     <link rel="stylesheet" type="text/css" href="css/main.css">
 
     <!-- Icons -->
@@ -49,10 +48,10 @@
       <h2>tl;dr</h2>
       <p>templater.js is a teeny JavaScript library for minimal templating needs (soon to be made obsolete by <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals">ES6 templating</a>). Its templating expression syntax mimics that of {{mustache}}/Handlebars. Barebones conditional logic included.</p>
 
-      <div class="pros">
+      <div class="pros language-js">
         <h3>Features</h3>
         <ul>
-          <li>No <code>eval</code>s or <code>new Function() { &hellip; }</code>s</li>
+          <li>No <code>eval()</code>s or <code>new Function() { &hellip; }</code>s</li>
           <li>HTML characters (&lt;, &gt;, and &amp;) automatically escaped</li>
           <li>< 1KB after minification</li>
           <li>Zero dependencies</li>
@@ -63,7 +62,7 @@
         <h3>Limitations</h3>
         <ul>
           <li>Cannot nest logic statements</li>
-          <li>Cannot nest properties (e.g. <code>{{foo.bar.baz}}</code></li>
+          <li>Cannot nest properties (e.g. <code>{{foo.bar.baz}}</code>)</li>
         </ul>
       </div>
 
@@ -75,7 +74,7 @@
         <pre><code>&lt;script src="path/to/templater.min.js">&lt;/script></code></pre>
         </li>
         <li>Create the template you'd like to use:</li>
-        <pre><code>&lt;!-- by using a non-standard `type` the browser won't parse it -->
+        <pre class="language-markup"><code>&lt;!-- by using a non-standard `type` the browser won't parse it -->
 &lt;script id="my-template" type="text/template">
   &lt;h2>Hi, my name is {{ name }}.&lt;/h2>
   &lt;p>I am {{ age }} years old and live in {{ location }}.&lt;/p>
@@ -91,7 +90,7 @@ document.body.insertAdjacentHTML("beforeend", template({
         </li>
       </ol>
     </section>
-    <section class="language-markup">
+    <section>
       <h2>Syntax</h2>
       <h3>Expressions</h3>
       <p>Syntax mimics {{mustache}}/Handlebars: <code>{{ contents }}</code> where <code>contents</code> represents what you'd like to replace when the template is rendered against some data. Note that the amount of whitespace between <code>contents</code> and the two braces doesn't matter. For example, the following are all equivalent:</p>
@@ -114,15 +113,15 @@ document.body.insertAdjacentHTML("beforeend", template({
 
       <p>To provide multiple arguments to the condition, just separate them by commas: <code>{{ #if (foo, bar, baz) }}</code></p>
 
-      <p>For example, given the following template snippet</p><pre><code>{{ #if (name, age) }}
+      <p>For example, given the following template snippet</p><pre class="language-markup"><code>{{ #if (name, age) }}
   &lt;p>Hi, my name is {{ name }} and I am {{ age }} years old.&lt;/p>
 {{ /if }}</code></pre>
-      <p>rendered against the following</p><pre><code>{
+      <p>rendered against the following</p><pre class="language-js"><code>{
   name: "John",
   age: 27
 }</code></pre>
-    <p>will produce</p><pre><code>&lt;p>Hi, my name is John and I am 27 years old.&lt;/p></code></pre>
-    <p>however, rendered against data where <code>name</code> or <code>age</code> is falsy</p><pre><code>{
+    <p>will produce</p><pre class="language-markup"><code>&lt;p>Hi, my name is John and I am 27 years old.&lt;/p></code></pre>
+    <p>however, rendered against data where <code>name</code> or <code>age</code> is falsy</p><pre class="language-js"><code>{
   name: "John",
   age: 0
 }</code></pre>
