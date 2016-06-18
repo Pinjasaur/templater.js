@@ -493,7 +493,10 @@ pre[class*="language-"] {
     width: 95%;
     margin: .5em 0; }
     .btn.header + .btn.header {
-      margin-bottom: 1em; } }
+      margin-bottom: 1em; }
+  .tldr .pros, .tldr .cons {
+    float: none !important;
+    width: 100% !important; } }
 
 *, *:before, *:after {
   box-sizing: border-box; }

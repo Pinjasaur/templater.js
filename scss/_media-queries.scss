@@ -21,4 +21,9 @@
       margin-bottom: 1em;
     }
   }
+
+  .tldr .pros, .tldr .cons {
+    float: none !important;
+    width: 100% !important;
+  }
 }
