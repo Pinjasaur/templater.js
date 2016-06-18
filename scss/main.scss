@@ -66,6 +66,10 @@ main {
   margin-right: auto;
   padding: 1em;
 
+  section > h2 {
+    border-bottom: 1px solid $dark;
+  }
+
   > * + * {
     margin-top: 3em;
   }
@@ -75,10 +79,29 @@ main {
     margin-bottom: 0;
   }
 
+  li + li {
+    margin-top: .3em;
+  }
+
   code {
-    background: darken($light, 10%);
+    background: darken($light, 5%);
     padding: .2em;
     border-radius: 2px;
+  }
+
+  a {
+    color: $dark;
+  }
+
+  .btn {
+    background: $highlight;
+    color: $light;
+    padding: .35em;
+    text-decoration: none;
+
+    &:hover {
+      background: darken($highlight, 3%);
+    }
   }
 }
 
@@ -88,7 +111,6 @@ main {
     float: left;
 
     > ul {
-      //padding-left: 1em;
       list-style-type: none;
 
       > li:before {
@@ -100,7 +122,6 @@ main {
 
   .pros li:before {
     content: "✓";
-    //font-weight: bold;
     color: #35A00B;
   }
 

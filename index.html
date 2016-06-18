@@ -43,7 +43,7 @@
   <main>
     <section class="tldr clearfix">
       <h2>tl;dr</h2>
-      <p>templater.js is a teeny JavaScript library for minimal templating needs (soon to be made obsolete by <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals">ES6 templating</a>). Its templating expression syntax mimics that of mustache/Handlebars. Barebones conditional logic included.</p>
+      <p>templater.js is a teeny JavaScript library for minimal templating needs (soon to be made obsolete by <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals">ES6 templating</a>). Its templating expression syntax mimics that of {{mustache}}/Handlebars. Barebones conditional logic included.</p>
 
       <div class="pros">
         <h3>Features</h3>
@@ -87,24 +87,60 @@ document.body.insertAdjacentHTML("beforeend", template({
         </li>
       </ol>
     </section>
-    <section>
+    <section class="language-markup">
       <h2>Syntax</h2>
-      <p><span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur, reprehenderit, veniam. In, adipisci tempore accusantium necessitatibus rerum et dolores deserunt assumenda amet veritatis facilis, quibusdam modi dolore architecto facere earum!</span>
-      <span>Maxime sit facere totam, molestias saepe hic, odio numquam sapiente cupiditate cumque consectetur qui corrupti aliquam quidem dicta repudiandae eligendi sunt exercitationem aut nihil, in doloribus. Dicta eos eius consequatur.</span>
-      <span>Sit voluptate a dolorem maxime animi dignissimos magni ex delectus est natus quas, quisquam cupiditate, fugiat facilis iure perferendis iste ipsa eius non dolore? Consequuntur minima eos vitae. Illo, aliquid.</span>
-      <span>Molestiae a aliquid illo velit ullam placeat ratione odio similique. Quam, at eos eaque accusantium quasi exercitationem natus doloremque. Laborum assumenda, aspernatur unde quod odit saepe fugit voluptatem, minus repudiandae?</span></p>
+      <h3>Expressions</h3>
+      <p>Syntax mimics {{mustache}}/Handlebars: <code>{{ contents }}</code> where <code>contents</code> represents what you'd like to replace when the template is rendered against some data. Note that the amount of whitespace between <code>contents</code> and the two braces doesn't matter. For example, the following are all equivalent:</p>
+
+      <ul>
+        <li><code>{{contents}}</code></li>
+        <li><code>{{&nbsp;&nbsp;&nbsp;&nbsp;contents}}</code></li>
+        <li><code>{{contents&nbsp;&nbsp;&nbsp;}}</code></li>
+        <li><code>{{&nbsp;&nbsp;&nbsp;contents&nbsp;&nbsp;&nbsp;&nbsp;}}</code></li>
+      </ul>
+
+      <p>However, for the sake of readability I would recommend using 0 or 1 spaces between the braces and the expression body.</p>
+
+      <h3>Conditionals</h3>
+      <p>You can use a <code>#if</code> directive to conditionally render template contents based on the truthy value of the arguments. The syntax looks like:</p>
+      <pre class="language-markup"><code>{{ #if (condition) }}
+  &lt;!-- this only renders if `condition` evaluates to a truthy value -->
+  <p>My conditional contents: {{ contents }}</p>
+{{ /if }}</code></pre>
+
+      <p>To provide multiple arguments to the condition, just separate them by commas: <code>{{ #if (foo, bar, baz) }}</code></p>
+
+      <p>For example, given the following template snippet</p><pre><code>{{ #if (name, age) }}
+  &lt;p>Hi, my name is {{ name }} and I am {{ age }} years old.&lt;/p>
+{{ /if }}</code></pre>
+      <p>rendered against the following</p><pre><code>{
+  name: "John",
+  age: 27
+}</code></pre>
+    <p>will produce</p><pre><code>&lt;p>Hi, my name is John and I am 27 years old.&lt;/p></code></pre>
+    <p>however, rendered against data where <code>name</code> or <code>age</code> is falsy</p><pre><code>{
+  name: "John",
+  age: 0
+}</code></pre>
+    <p>the body of the <code>#if</code> condition won't be rendered.</p>
     </section>
     <section>
       <h2>Limitations</h2>
-      <p><span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta porro, eos. Nemo vero ratione, maiores natus obcaecati totam cupiditate laboriosam consequuntur, aperiam quasi neque cumque, suscipit quos est molestias aut.</span>
-      <span>Delectus, ad quos veritatis nostrum praesentium similique molestias, aut repudiandae quod doloremque fugiat cumque mollitia velit! Debitis repellendus praesentium officiis earum, laboriosam adipisci quia dolor maxime quisquam pariatur explicabo, at.</span>
-      <span>Ex soluta dolorum modi repellendus harum officiis blanditiis? Sequi id, eaque possimus maiores dolores distinctio ducimus officia atque ad voluptas dolore error inventore odit repellat incidunt architecto quo ut amet!</span>
-      <span>Et beatae officiis, mollitia, quasi quisquam cumque, asperiores natus nostrum hic a id quia nam ex doloribus, iure nesciunt accusamus libero. Minima ullam repellendus illo laborum exercitationem est assumenda atque!</span></p>
+      <h3>Nested <code>#if</code>s</h3>
+      <p>Due to how the templating is handled (regular expressions) nested <code>#if</code> statements will not work. The script won't complain, but the desired logic will not be achieved.</p>
+
+      <h3>Nested properties</h3>
+      <p>Once again, due to how the replacement in the templating is done, nested properties will not work; <code>{{ foo.bar.baz }}</code> will look for a <em>property</em> named "foo.bar.baz" not the property <code>baz</code> of the property <code>bar</code> of the property <code>foo</code>.</p>
+    </section>
+    <section>
+      <h2>Contributing</h2>
+      <p>Have an idea for improvement? Could this documentation be clarified? Is there an optimization to the templating logic that could be made?</p>
+      <p><a class="btn" href="https://github.com/Pinjasaur/templater.js/fork">Fork the repository</a> and submit a pull request on GitHub.</p>
     </section>
   </main>
 
   <footer>
-    A thing by <a href="http://github.com/pinjasaur"><code>{{author}}</code></a>.
+    <p>A thing by <a href="http://github.com/pinjasaur"><code>{{author}}</code></a>.</p>
   </footer>
 
   <script src="js/prism.js"></script>

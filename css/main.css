@@ -541,15 +541,28 @@ main {
   margin-left: auto;
   margin-right: auto;
   padding: 1em; }
+  main section > h2 {
+    border-bottom: 1px solid #050505; }
   main > * + * {
     margin-top: 3em; }
   main ol, main ul {
     padding-left: 1em;
     margin-bottom: 0; }
+  main li + li {
+    margin-top: .3em; }
   main code {
-    background: #dedede;
+    background: #eaeaea;
     padding: .2em;
     border-radius: 2px; }
+  main a {
+    color: #050505; }
+  main .btn {
+    background: #AC1515;
+    color: #F7F7F7;
+    padding: .35em;
+    text-decoration: none; }
+    main .btn:hover {
+      background: #9e1313; }
 
 .tldr .pros, .tldr .cons {
   width: 50%;
