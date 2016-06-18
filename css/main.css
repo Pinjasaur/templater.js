@@ -479,6 +479,9 @@ pre[class*="language-"] {
 .token.entity {
   cursor: help; }
 
+*, *:before, *:after {
+  box-sizing: border-box; }
+
 html {
   line-height: 1.5; }
 
@@ -505,13 +508,11 @@ header {
     font-size: 1.2em;
     border: 2px solid #050505;
     border-radius: 4px;
-    margin: 0 0.4em 3em;
+    margin: 0 1em 3em;
     display: inline-block; }
     header .btn:hover {
       background: #050505;
       color: #AC1515; }
-    header .btn + .btn {
-      margin-left: 6em; }
 
 main {
   max-width: 1200px;
@@ -520,6 +521,8 @@ main {
   padding: 1em; }
   main > * + * {
     margin-top: 3em; }
+  main ol {
+    padding-left: 1em; }
 
 footer {
   background: #383838;
@@ -539,4 +542,9 @@ footer {
   html {
     font-size: 0.8rem; }
   .fork-me-ribbon {
-    display: none; } }
+    display: none; }
+  .btn.header {
+    width: 95%;
+    margin: .5em 0; }
+    .btn.header + .btn.header {
+      margin-bottom: 1em; } }

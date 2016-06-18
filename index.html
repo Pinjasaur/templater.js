@@ -31,11 +31,10 @@
 
   <header>
     <h1 class="headline">templater.js</h1>
-    <h3 class="tagline">Simple JavaScript <code>{{templating}}</code></h3>
+    <h3 class="tagline">A tiny JS library for minimal <code>{{templating}}</code>.</h3>
 
-    <a href="#0" class="btn">Download Script &rarr;</a>
-    <strong>or</strong>
-    <a href="#0" class="btn">View on GitHub &rarr;</a>
+    <a href="#0" class="btn header">Download Script &rarr;</a>
+    <a href="#0" class="btn header">View on GitHub &rarr;</a>
 
     <!-- Fork me on GitHub ribbon -->
     <a href="https://github.com/Pinjasaur/templater.js" class="fork-me-ribbon"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
@@ -44,10 +43,21 @@
   <main>
     <section>
       <h2>tl;dr</h2>
-      <p><span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maiores ullam pariatur tenetur sequi nesciunt placeat voluptas optio rerum, accusantium nihil ipsum, qui soluta incidunt aut voluptatem reprehenderit laborum ratione. Harum.</span>
-      <span>Dolor iste ex culpa, harum architecto recusandae! Facilis harum ipsam iste eligendi labore, vitae deserunt sunt repudiandae a. Modi debitis quasi corporis reprehenderit nemo maxime aliquid ipsa illum ullam. Ratione!</span>
-      <span>Magnam dolorum cumque distinctio voluptas quo quis officiis. Quibusdam, quas est? Eum maiores porro corporis magnam, sapiente illum quia aliquid laudantium quod quam sunt minus nulla beatae nobis dolorem reprehenderit!</span>
-      <span>Optio tempore minus corporis, ipsum magnam molestias suscipit quae velit illo iusto, voluptates fuga, repudiandae cupiditate doloremque omnis debitis possimus! Alias, ullam. Cum vero nam, veritatis molestiae, quia distinctio reiciendis!</span></p>
+      <code>templater.js</code> is a teeny JavaScript library for minimal templating needs (soon to be made obsolete by ES6). Its syntax is based on <code>{{mustache}}</code>/Handlebars its logic is very nominal.
+
+      <h3>Pros</h3>
+      <ul class="pros">
+        <li>No <code>eval</code>s or <code>new Function() { &hellip; }</code>s</li>
+        <li>< 1KB after minification</li>
+        <li>Zero dependencies</li>
+      </ul>
+
+      <h3>Cons</h3>
+      <ul class="cons">
+        <li>Cannot nest logic statements</li>
+        <li>Cannot nest properties (e.g. <code>{{foo.bar.baz}}</code></li>
+        <li>Only barebones logic included</li>
+      </ul>
     </section>
     <section class="language-markup">
       <h2>Getting Started</h2>
@@ -89,7 +99,7 @@ document.body.insertAdjacentHTML("beforeend", template({
   </main>
 
   <footer>
-    A thing by <a href="http://github.com/pinjasaur">Paul</a>.
+    A thing by <a href="http://github.com/pinjasaur"><code>{{author}}</code></a>.
   </footer>
 
   <script src="js/prism.js"></script>

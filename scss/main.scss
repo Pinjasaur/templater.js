@@ -5,6 +5,10 @@ $dark: #050505;
 $light: #F7F7F7;
 $highlight: #AC1515;
 
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
 html {
   line-height: 1.5;
 }
@@ -38,16 +42,12 @@ header {
     font-size: 1.2em;
     border: 2px solid $dark;
     border-radius: 4px;
-    margin: 0 0.4em 3em;
+    margin: 0 1em 3em;
     display: inline-block;
 
     &:hover {
       background: $dark;
       color: $highlight;
-    }
-
-    + .btn {
-      margin-left: 6em;
     }
   }
 }
@@ -60,6 +60,10 @@ main {
 
   > * + * {
     margin-top: 3em;
+  }
+
+  ol {
+    padding-left: 1em;
   }
 }
 
@@ -91,5 +95,14 @@ footer {
 
   .fork-me-ribbon {
     display: none;
+  }
+
+  .btn.header {
+    width: 95%;
+    margin: .5em 0;
+
+    & + & {
+      margin-bottom: 1em;
+    }
   }
 }
