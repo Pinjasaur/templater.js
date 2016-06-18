@@ -41,23 +41,28 @@
   </header>
 
   <main>
-    <section>
+    <section class="tldr clearfix">
       <h2>tl;dr</h2>
-      <code>templater.js</code> is a teeny JavaScript library for minimal templating needs (soon to be made obsolete by ES6). Its syntax is based on <code>{{mustache}}</code>/Handlebars its logic is very nominal.
+      <p>templater.js is a teeny JavaScript library for minimal templating needs (soon to be made obsolete by <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals">ES6 templating</a>). Its templating expression syntax mimics that of mustache/Handlebars. Barebones conditional logic included.</p>
 
-      <h3>Pros</h3>
-      <ul class="pros">
-        <li>No <code>eval</code>s or <code>new Function() { &hellip; }</code>s</li>
-        <li>< 1KB after minification</li>
-        <li>Zero dependencies</li>
-      </ul>
+      <div class="pros">
+        <h3>Features</h3>
+        <ul>
+          <li>No <code>eval</code>s or <code>new Function() { &hellip; }</code>s</li>
+          <li>HTML characters (&lt;, &gt;, and &amp;) automatically escaped</li>
+          <li>< 1KB after minification</li>
+          <li>Zero dependencies</li>
+        </ul>
+      </div>
 
-      <h3>Cons</h3>
-      <ul class="cons">
-        <li>Cannot nest logic statements</li>
-        <li>Cannot nest properties (e.g. <code>{{foo.bar.baz}}</code></li>
-        <li>Only barebones logic included</li>
-      </ul>
+      <div class="cons">
+        <h3>Limitations</h3>
+        <ul>
+          <li>Cannot nest logic statements</li>
+          <li>Cannot nest properties (e.g. <code>{{foo.bar.baz}}</code></li>
+        </ul>
+      </div>
+
     </section>
     <section class="language-markup">
       <h2>Getting Started</h2>

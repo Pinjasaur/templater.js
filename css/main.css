@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /*! normalize.css v4.1.1 | MIT License | github.com/necolas/normalize.css */
 /**
  * 1. Change the default font family in all browsers (opinionated).
@@ -479,11 +480,32 @@ pre[class*="language-"] {
 .token.entity {
   cursor: help; }
 
+@media (max-width: 768px) {
+  html {
+    font-size: 0.9rem; } }
+
+@media (max-width: 480px) {
+  html {
+    font-size: 0.8rem; }
+  .fork-me-ribbon {
+    display: none; }
+  .btn.header {
+    width: 95%;
+    margin: .5em 0; }
+    .btn.header + .btn.header {
+      margin-bottom: 1em; } }
+
 *, *:before, *:after {
   box-sizing: border-box; }
 
+.clearfix:after {
+  content: " ";
+  display: block;
+  clear: both; }
+
 html {
-  line-height: 1.5; }
+  line-height: 1.5;
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif; }
 
 a:hover {
   text-decoration: none; }
@@ -521,11 +543,33 @@ main {
   padding: 1em; }
   main > * + * {
     margin-top: 3em; }
-  main ol {
-    padding-left: 1em; }
+  main ol, main ul {
+    padding-left: 1em;
+    margin-bottom: 0; }
+  main code {
+    background: #dedede;
+    padding: .2em;
+    border-radius: 2px; }
+
+.tldr .pros, .tldr .cons {
+  width: 50%;
+  float: left; }
+  .tldr .pros > ul, .tldr .cons > ul {
+    list-style-type: none; }
+    .tldr .pros > ul > li:before, .tldr .cons > ul > li:before {
+      padding-right: .5em;
+      font-weight: bold; }
+
+.tldr .pros li:before {
+  content: "✓";
+  color: #35A00B; }
+
+.tldr .cons li:before {
+  content: "✘";
+  color: #AD1313; }
 
 footer {
-  background: #383838;
+  background: #1f1f1f;
   color: #F7F7F7;
   text-align: center;
   padding: 3em; }
@@ -533,18 +577,3 @@ footer {
     color: #F7F7F7; }
     footer a:hover {
       color: #ababab; }
-
-@media (max-width: 768px) {
-  html {
-    font-size: 0.9rem; } }
-
-@media (max-width: 480px) {
-  html {
-    font-size: 0.8rem; }
-  .fork-me-ribbon {
-    display: none; }
-  .btn.header {
-    width: 95%;
-    margin: .5em 0; }
-    .btn.header + .btn.header {
-      margin-bottom: 1em; } }

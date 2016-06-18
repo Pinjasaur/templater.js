@@ -1,0 +1,24 @@
+@media (max-width: 768px) {
+  html {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  html {
+    font-size: 0.8rem;
+  }
+
+  .fork-me-ribbon {
+    display: none;
+  }
+
+  .btn.header {
+    width: 95%;
+    margin: .5em 0;
+
+    & + & {
+      margin-bottom: 1em;
+    }
+  }
+}
