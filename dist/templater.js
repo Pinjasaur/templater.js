@@ -59,7 +59,7 @@
       // loop through each property of the data
       for (var prop in data) {
         // create the regex to match the '{{ prop }}' format
-        regex = "{{\\s*" + prop + "\\s*}}";
+        regex = "{{\\s?" + prop + "\\s?}}";
         // replace the instances in the template with the property value (escaping &, <, and > if necessary)
         template = template.replace(new RegExp(regex, "ig"), ("" + data[prop]).replace(/[&<>]/g, function(tag) {
           // replace &, <, or > if necessary
