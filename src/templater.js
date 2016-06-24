@@ -2,6 +2,7 @@
 
   "use strict";
 
+  // check if `templater` already exists globally
   if (global.templater) {
     throw new Error("templater already defined.");
   }
