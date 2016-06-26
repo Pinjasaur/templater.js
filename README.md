@@ -137,11 +137,8 @@ Given the simple nature of the templating, there are 3 main limitations to consi
 
 If you'd like to fork the repo and submit pull request, please feel free.
 
-Please be considerate of the following guidelines:
-- Use 2 spaces for a tab.
-- Double quotes, not single.
-- Run `gulp build` to rebuild the files in `dist/`. 
-- Document what you did with comments in the source and an explanation in the pull request.
+Check out [CONTRIBUTING.md] for specifics.
 
+[CONTRIBUTING]: https://github.com/Pinjasaur/templater.js/blob/master/CONTRIBUTING.md
 [handlebars]: http://handlebarsjs.com/
 [homepage]: http://pinjasaur.github.io/templater.js/
