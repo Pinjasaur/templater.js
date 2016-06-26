@@ -137,7 +137,7 @@ Given the simple nature of the templating, there are 3 main limitations to consi
 
 If you'd like to fork the repo and submit pull request, please feel free.
 
-Check out [CONTRIBUTING.md] for specifics.
+Check out [CONTRIBUTING.md][CONTRIBUTING] for specifics.
 
 [CONTRIBUTING]: https://github.com/Pinjasaur/templater.js/blob/master/CONTRIBUTING.md
 [handlebars]: http://handlebarsjs.com/
