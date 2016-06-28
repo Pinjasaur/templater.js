@@ -15,7 +15,7 @@
   "bugs": {
     "url": "https://github.com/Pinjasaur/templater.js/issues"
   },
-  "homepage": "https://github.com/Pinjasaur/templater.js#readme",
+  "homepage": "https://pinjasaur.github.io/templater.js/",
   "devDependencies": {
     "browser-sync": "^2.13.0",
     "gulp": "^3.9.1",
