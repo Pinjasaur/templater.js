@@ -2,7 +2,7 @@
   "name": "templater.js",
   "version": "1.0.0",
   "description": "Minimal JavaScript templating.",
-  "main": "index.js",
+  "main": "dist/templater.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -15,7 +15,7 @@
   "bugs": {
     "url": "https://github.com/Pinjasaur/templater.js/issues"
   },
-  "homepage": "https://github.com/Pinjasaur/templater.js#readme",
+  "homepage": "https://pinjasaur.github.io/templater.js/",
   "devDependencies": {
     "gulp": "^3.9.1",
     "gulp-clean": "^0.3.2",
