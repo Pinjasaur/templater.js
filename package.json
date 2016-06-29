@@ -17,6 +17,7 @@
   },
   "homepage": "https://pinjasaur.github.io/templater.js/",
   "devDependencies": {
+    "chai": "^3.5.0",
     "gulp": "^3.9.1",
     "gulp-clean": "^0.3.2",
     "gulp-header": "^1.8.2",
@@ -24,6 +25,7 @@
     "gulp-rename": "^1.2.2",
     "gulp-strip-debug": "^1.1.0",
     "gulp-uglify": "^1.5.3",
-    "jshint": "^2.9.2"
+    "jshint": "^2.9.2",
+    "mocha": "^2.5.3"
   }
 }

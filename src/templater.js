@@ -1,11 +1,6 @@
-(function(global) {
+(function() {
 
   "use strict";
-
-  // check if `templater` already exists globally
-  if (global.templater) {
-    throw new Error("templater already defined.");
-  }
 
   function templater(template) {
     
@@ -77,7 +72,11 @@
     }
   }
 
-  // expose templater globally
-  global.templater = templater;
+  // expose templater globally (to `window` or `module.exports`)
+  if (typeof module !== "undefined" && typeof module.exports !== "undefined") {
+    module.exports = templater;
+  } else {
+    window.templater = templater;
+  }
 
-})(typeof window === "undefined" ? this : window);
+})();
