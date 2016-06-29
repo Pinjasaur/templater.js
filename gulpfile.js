@@ -7,7 +7,7 @@ var gulp   = require("gulp"),
     header = require("gulp-header"),
     pkg    = require("./package.json"),
     banner = ["/*!",
-              " * <%= pkg.name %> v<%= pkg.version %>",
+              " * <%= pkg.name %> v<%= pkg.version %> | <%= pkg.homepage %>",
               " * @author <%= pkg.author %> | @license <%= pkg.license %>",
               " */",
               ""].join("\n");

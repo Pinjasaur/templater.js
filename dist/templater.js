@@ -1,5 +1,5 @@
 /*!
- * templater.js v1.0.0
+ * templater.js v1.0.0 | https://pinjasaur.github.io/templater.js/
  * @author Paul Esch-Laurent | @license MIT
  */
 (function() {
