@@ -1,5 +1,3 @@
-// basic tests, simple templates
-
 var templater = require("./../src/templater.js"),
     chai = require("chai"),
     assert = chai.assert;
