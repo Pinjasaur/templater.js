@@ -27,9 +27,9 @@
         // remove all whitespace between conditions, split on commas
         conditions = match[1].replace(/\s+/g, "").split(",");
         
-        // check each condition to see if it exists in the data
+        // check each condition to see if it's truthy
         for (var i = 0; i < conditions.length; i++) {
-          // if it doesn't, break out
+          // if it isn't, break out
           if (!data[conditions[i]]) {
             meetsConditions = false;
             break;

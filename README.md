@@ -7,7 +7,7 @@ Inspired by http://jsforallof.us/2014/12/01/the-anatomy-of-a-simple-templating-e
 
 ## TODO
 
-- [ ] setup testing w/ Chai + Mocha
+- [x] setup testing w/ Chai + Mocha
 - [x] set up gulp for minification, etc
 - [x] beef up readme with usage, limitations, etc
 - [ ] create live demos (jsfiddle and/or codepen)
@@ -50,26 +50,27 @@ Inspired by http://jsforallof.us/2014/12/01/the-anatomy-of-a-simple-templating-e
 
 ### Expressions
 
-Syntax mimics the [Handlebars][handlebars] templating expression: `{{ contents }}` where `contents` represents what you'd like to replace when the template is rendered. Note that the amount whitespace between `contents` and the two braces doesn't matter. For example, the following are all valid expressions:
-- <code>{{contents}}</code>
-- <code>{{&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;contents}}</code>
-- <code>{{contents&nbsp;&nbsp;&nbsp;}}</code>
-- <code>{{&nbsp;&nbsp;&nbsp;contents&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</code>
+Syntax mimics the [Handlebars][handlebars] templating expression: `{{ contents }}` where `contents` represents what you'd like to replace when the template is rendered. Note that the amount whitespace between `contents` and the two braces is limited to exactly 0 (zero) or 1 (one). For example, the following are all valid expressions:
 
-However, for the sake of readability I would recommend using no spaces (`{{contents`) _or_ 1 space on either side (`{{ contents }}`).
+- `{{contents}}`
+- `{{ contents}}`
+- `{{contents }}`
+- `{{ contents }}`
+
+However, for the sake of readability and consistency I would recommend sticking to using no spaces (`{{contents}}`) _or_ 1 space on either side (`{{ contents }}`).
 
 ### Conditionals
 
-You can conditionally show template contents by using a `if` condition with the following syntax:
+You can conditionally show template contents by using an `#if` directive with the following syntax:
 
 ```html
 {{ #if (condition) }}
-  <!-- this only renders if `condition` exists in the object the template is rendered with -->
+  <!-- this only renders if `condition` is truthy -->
   <p>My conditional contents: {{ contents }}</p>
 {{ /if }}
 ```
 
-The arguments in the `#if` expression are expression contents that **must** exist for the body of the condition to be rendered. You can have multiple conditions separated by commas: `{{ #if (foo, bar, baz) }}`.
+The arguments in the `#if` expression are expression contents that **must** be truthy for the body of the condition to be rendered. You can have multiple conditions separated by commas: `{{ #if (foo, bar, baz) }}`.
 
 For example, given the following template snippet
 
@@ -92,10 +93,11 @@ will produce
 <p>Hi my name is Paul and I am 20 years old.</p>
 ```
 
-however, rendered against data where `name` and/or `age` is not present
+however, rendered against data where `name` and/or `age` is falsy
 ```javascript
 {
-  name: "Paul"
+  name: "Paul",
+  age: 0
 }
 ```
 
