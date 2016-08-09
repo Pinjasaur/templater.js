@@ -12,20 +12,26 @@
     return function(data) {
       
       // regex for the #if, body, /if
-      var start = "{{\\s?#if\\s+\\((.+)\\)\\s?}}",
+      var start = "{{\\s?#if\\s+(!)?\\((.+)\\)\\s?}}",
           end = "{{\\s?/if\\s?}}",
           regex = start + "[\\s\\S]+?" + end,
           // save a reference to the template so it can be restored at the end
           tmpl = template,
-          match, conditions, meetsConditions;
+          match, notted, conditions, meetsConditions;
       
       // keep matching conditions until there are none
       while (match = new RegExp(regex, "ig").exec(template)) {
+
+        void 0;
         
         // assume it meets all conditions
         meetsConditions = true;
+
+        // if a match for /(!)?/ was found, it's `notted`
+        notted = !!match[1];
+
         // remove all whitespace between conditions, split on commas
-        conditions = match[1].replace(/\s+/g, "").split(",");
+        conditions = match[2].replace(/\s+/g, "").split(",");
         
         // check each condition to see if it's truthy
         for (var i = 0; i < conditions.length; i++) {
@@ -35,6 +41,12 @@
             break;
           }
         }
+
+        void 0;
+
+        meetsConditions = notted ^ meetsConditions;
+
+        void 0;
         
         // check if it meets the conditions
         if (!meetsConditions) {

@@ -30,4 +30,31 @@ describe("Conditional Tests", function() {
 
     assert.equal(template(context), "");
   });
+
+  it("inverts (nots) the evaluation of truthy arguments", function() {
+    var template = templater([
+      "{{#if !(name, age)}}",
+      "Hi, I'm {{name}}, I'm {{age}} years old.",
+      "{{/if}}"
+      ].join("")),
+        context = {
+          name: "Paul",
+          age: 20
+        };
+
+    assert.equal(template(context), "");
+  });
+
+  it("inverts (nots) the evaluation of falsy arguments", function() {
+    var template = templater([
+      "{{#if !(name, age)}}",
+      "Hi, I'm {{name}}, I'm {{age}} years old.",
+      "{{/if}}"
+      ].join("")),
+        context = {
+          name: "Paul"
+        };
+
+    assert.equal(template(context), "Hi, I'm Paul, I'm {{age}} years old.");
+  });
 });
