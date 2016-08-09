@@ -6,25 +6,37 @@ var gulp   = require("gulp"),
     strip  = require("gulp-strip-debug"),
     header = require("gulp-header"),
     pkg    = require("./package.json"),
-    banner = ["/*!",
-              " * <%= pkg.name %> v<%= pkg.version %> | <%= pkg.homepage %>",
-              " * @author <%= pkg.author %> | @license <%= pkg.license %>",
-              " */",
-              ""].join("\n");
+    config = {
+      banner: {
+        full: [
+          "/*!",
+          " * <%= pkg.name %> v<%= pkg.version %> - <%= pkg.description %>",
+          " * On the web at <%= pkg.homepage %>",
+          " * Written by <%= pkg.author %>",
+          " * Licensed under <%= pkg.license %>",
+          " */",
+          ""
+        ].join("\n"),
+        min: [
+          "/*! <%= pkg.name %> v<%= pkg.version %> | <%= pkg.license %> License | <%= pkg.homepage %> */",
+          ""
+        ].join("\n")
+      },
+      rename: {
+        suffix: ".min"
+      }
+    };
 
 // lint + minify JS
 gulp.task("build", function() {
   return gulp.src("src/*")
     .pipe(strip())
     .pipe(jshint())
-    .pipe(header(banner, { pkg: pkg }))
+    .pipe(header(config.banner.full, { pkg: pkg }))
     .pipe(gulp.dest("dist/"))
-    .pipe(uglify({
-      preserveComments: "license"
-    }))
-    .pipe(rename({
-      suffix: ".min"
-    }))
+    .pipe(uglify())
+    .pipe(header(config.banner.min, { pkg: pkg }))
+    .pipe(rename(config.rename))
     .pipe(gulp.dest("dist/"));
 });
 

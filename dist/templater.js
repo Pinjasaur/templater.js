@@ -1,6 +1,8 @@
 /*!
- * templater.js v1.0.0 | https://pinjasaur.github.io/templater.js/
- * @author Paul Esch-Laurent | @license MIT
+ * templater.js v1.0.0 - Minimal JavaScript templating.
+ * On the web at https://pinjasaur.github.io/templater.js/
+ * Written by Paul Esch-Laurent
+ * Licensed under MIT
  */
 (function() {
 
