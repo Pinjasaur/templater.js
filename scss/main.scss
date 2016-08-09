@@ -4,7 +4,7 @@
 
 $dark: #050505;
 $light: #F7F7F7;
-$highlight: #AC1515;
+$highlight: hsl(272, 90, 45);
 
 *, *:before, *:after {
   box-sizing: border-box;
@@ -61,7 +61,7 @@ header {
 }
 
 main {
-  max-width: 1200px;
+  max-width: 60rem;
   margin-left: auto;
   margin-right: auto;
   padding: 1em;
@@ -93,14 +93,26 @@ main {
     color: $dark;
   }
 
-  .btn {
-    background: $highlight;
-    color: $light;
-    padding: .35em;
-    text-decoration: none;
+  // Match external links
+  // Credit: https://davidwalsh.name/external-links-css
+  a[href*="//"]:not([href*="pinjasaur.github.io/templater.js/"] {
+    position: relative;
 
-    &:hover {
-      background: darken($highlight, 3%);
+    &:after {
+      display: none;
+      content: attr(href);
+      position: absolute;
+      left: 0;
+      bottom: 100%;
+      padding: .1em .3em;
+      background: rgba($highlight, .95);
+      color: $light;
+      border-radius: 2px;
+      white-space: nowrap;
+    }
+
+    &:hover:after {
+      display: block;
     }
   }
 }

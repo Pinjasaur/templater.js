@@ -1,12 +1,18 @@
+@media (min-width: 1441px) {
+  html {
+    font-size: 1.05rem;
+  }
+}
+
 @media (max-width: 768px) {
   html {
-    font-size: 0.9rem;
+    font-size: 0.95rem;
   }
 }
 
 @media (max-width: 480px) {
   html {
-    font-size: 0.8rem;
+    font-size: 0.9rem;
   }
 
   .fork-me-ribbon {

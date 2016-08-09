@@ -480,13 +480,17 @@ pre[class*="language-"] {
 .token.entity {
   cursor: help; }
 
+@media (min-width: 1441px) {
+  html {
+    font-size: 1.05rem; } }
+
 @media (max-width: 768px) {
   html {
-    font-size: 0.9rem; } }
+    font-size: 0.95rem; } }
 
 @media (max-width: 480px) {
   html {
-    font-size: 0.8rem; }
+    font-size: 0.9rem; }
   .fork-me-ribbon {
     display: none; }
   .btn.header {
@@ -514,7 +518,7 @@ a:hover {
   text-decoration: none; }
 
 header {
-  background: #AC1515;
+  background: #7a0bda;
   color: #050505;
   text-align: center; }
   header .headline {
@@ -537,10 +541,10 @@ header {
     display: inline-block; }
     header .btn:hover {
       background: #050505;
-      color: #AC1515; }
+      color: #7a0bda; }
 
 main {
-  max-width: 1200px;
+  max-width: 60rem;
   margin-left: auto;
   margin-right: auto;
   padding: 1em; }
@@ -559,13 +563,24 @@ main {
     border-radius: 2px; }
   main a {
     color: #050505; }
-  main .btn {
-    background: #AC1515;
-    color: #F7F7F7;
-    padding: .35em;
-    text-decoration: none; }
-    main .btn:hover {
-      background: #9e1313; }
+  main a[href^="http://"],
+  main a[href^="https://"] {
+    position: relative; }
+    main a[href^="http://"]:after,
+    main a[href^="https://"]:after {
+      display: none;
+      content: attr(href);
+      position: absolute;
+      left: 0;
+      bottom: 100%;
+      padding: .1em .3em;
+      background: rgba(122, 11, 218, 0.95);
+      color: #F7F7F7;
+      border-radius: 2px;
+      white-space: nowrap; }
+    main a[href^="http://"]:hover:after,
+    main a[href^="https://"]:hover:after {
+      display: block; }
 
 .tldr .pros, .tldr .cons {
   width: 50%;
