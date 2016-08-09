@@ -95,7 +95,7 @@ main {
 
   // Match external links
   // Credit: https://davidwalsh.name/external-links-css
-  a[href*="//"]:not([href*="pinjasaur.github.io/templater.js/"] {
+  a[href*="//"]:not([href*="pinjasaur.github.io/templater.js/"]) {
     position: relative;
 
     &:after {

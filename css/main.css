@@ -563,11 +563,9 @@ main {
     border-radius: 2px; }
   main a {
     color: #050505; }
-  main a[href^="http://"],
-  main a[href^="https://"] {
+  main a[href*="//"]:not([href*="pinjasaur.github.io/templater.js/"]) {
     position: relative; }
-    main a[href^="http://"]:after,
-    main a[href^="https://"]:after {
+    main a[href*="//"]:not([href*="pinjasaur.github.io/templater.js/"]):after {
       display: none;
       content: attr(href);
       position: absolute;
@@ -578,8 +576,7 @@ main {
       color: #F7F7F7;
       border-radius: 2px;
       white-space: nowrap; }
-    main a[href^="http://"]:hover:after,
-    main a[href^="https://"]:hover:after {
+    main a[href*="//"]:not([href*="pinjasaur.github.io/templater.js/"]):hover:after {
       display: block; }
 
 .tldr .pros, .tldr .cons {
