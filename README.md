@@ -11,7 +11,7 @@ Inspired by http://jsforallof.us/2014/12/01/the-anatomy-of-a-simple-templating-e
 - [x] set up gulp for minification, etc
 - [x] beef up readme with usage, limitations, etc
 - [ ] create live demos (jsfiddle and/or codepen)
-- [ ] ~~0/1 spaces~~, not #if, ~~use [] not hOP~~, ~~add `g` to regex~~
+- [ ] ~~0/1 spaces~~, ~~not #if~~, ~~use [] not hOP~~, ~~add `g` to regex~~
 
 ## Quick Start
 
