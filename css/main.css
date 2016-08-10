@@ -497,10 +497,20 @@ pre[class*="language-"] {
     width: 95%;
     margin: .5em 0; }
     .btn.header + .btn.header {
-      margin-bottom: 1em; }
+      margin-bottom: 2.5em; }
   .tldr .pros, .tldr .cons {
     float: none !important;
     width: 100% !important; } }
+
+::-moz-selection {
+  background-color: #cfcf17;
+  color: #050505;
+  text-shadow: none; }
+
+::selection {
+  background-color: #cfcf17;
+  color: #050505;
+  text-shadow: none; }
 
 *, *:before, *:after {
   box-sizing: border-box; }
@@ -518,9 +528,10 @@ a:hover {
   text-decoration: none; }
 
 header {
-  background: #7a0bda;
+  background: #cfcf17;
   color: #050505;
-  text-align: center; }
+  text-align: center;
+  position: relative; }
   header .headline {
     font-size: 4em;
     margin: 0;
@@ -541,13 +552,24 @@ header {
     display: inline-block; }
     header .btn:hover {
       background: #050505;
-      color: #7a0bda; }
+      color: #cfcf17; }
+  header:after {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: 0px;
+    width: 100%;
+    height: 20px;
+    background-image: url(../img/splitter-up.svg);
+    background-size: auto 20px; }
 
 main {
   max-width: 60rem;
   margin-left: auto;
   margin-right: auto;
-  padding: 1em; }
+  padding: 1em;
+  position: relative; }
   main section > h2 {
     border-bottom: 1px solid #050505; }
   main > * + * {
@@ -571,10 +593,11 @@ main {
       position: absolute;
       left: 0;
       bottom: 100%;
-      padding: .1em .3em;
-      background: rgba(122, 11, 218, 0.95);
-      color: #F7F7F7;
-      border-radius: 2px;
+      padding: .1em .2em;
+      background: rgba(207, 207, 23, 0.95);
+      font-size: .8em;
+      color: #050505;
+      border-radius: 1px;
       white-space: nowrap; }
     main a[href*="//"]:not([href*="pinjasaur.github.io/templater.js/"]):hover:after {
       display: block; }
@@ -600,8 +623,20 @@ footer {
   background: #1f1f1f;
   color: #F7F7F7;
   text-align: center;
-  padding: 3em; }
+  padding-top: 3.5em;
+  padding-bottom: 3em;
+  position: relative; }
   footer a {
     color: #F7F7F7; }
     footer a:hover {
       color: #ababab; }
+  footer:before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 20px;
+    background-image: url(../img/splitter-down.svg);
+    background-size: auto 20px; }
