@@ -1,0 +1,116 @@
+::selection {
+  background-color: $highlight;
+  color: $dark;
+  text-shadow: none;
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+.clearfix:after {
+  content: " ";
+  display: block;
+  clear: both;
+}
+
+html {
+  line-height: 1.5;
+  font-family: Roboto, Helvetica Neue, Helvetica, Arial, sans-serif;
+}
+
+code,
+code[class*="language-"],
+pre[class*="language-"] {
+  font-family: Inconsolata, Consolas, Monaco, monospace;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+main {
+  max-width: 60rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1em;
+  position: relative;
+  z-index: 1000;
+
+  section > h2 {
+    border-bottom: 1px solid $dark;
+  }
+
+  > * + * {
+    margin-top: 3em;
+  }
+
+  ol, ul {
+    padding-left: 1em;
+    margin-bottom: 0;
+  }
+
+  li + li {
+    margin-top: .3em;
+  }
+
+  code {
+    background: #f5f2f0;
+    padding: .2em;
+    border-radius: 2px;
+  }
+
+  a {
+    color: $dark;
+  }
+
+  // Match external links
+  // Credit: https://davidwalsh.name/external-links-css
+  a[href*="//"]:not([href*="pinjasaur.github.io/templater.js/"]) {
+    position: relative;
+
+    &:after {
+      display: none;
+      content: attr(href);
+      position: absolute;
+      left: 0;
+      bottom: 100%;
+      padding: .1em .2em;
+      background: rgba($highlight, .95);
+      font-size: .8em;
+      color: $dark;
+      border-radius: 1px;
+      white-space: nowrap;
+    }
+
+    &:hover:after {
+      display: block;
+    }
+  }
+}
+
+.tldr {
+  .pros, .cons {
+    width: 50%;
+    float: left;
+
+    > ul {
+      list-style-type: none;
+
+      > li:before {
+        padding-right: .5em;
+        font-weight: bold;
+      }
+    }
+  }
+
+  .pros li:before {
+    content: "✓";
+    color: #35A00B;
+  }
+
+  .cons li:before {
+    content: "✘";
+    color: #AD1313;
+  }
+}

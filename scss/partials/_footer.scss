@@ -1,0 +1,28 @@
+footer {
+  background: lighten($dark, 10%);
+  color: $light;
+  text-align: center;
+  padding-top: 4em;
+  padding-bottom: 3em;
+  position: relative;
+
+  a {
+    color: $light;
+
+    &:hover {
+      color: darken($light, 30%);
+    }
+  }
+
+  &:before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: $splitter-height;
+    background-image: url(../img/splitter-down.svg);
+    background-size: auto $splitter-height;
+  }
+}

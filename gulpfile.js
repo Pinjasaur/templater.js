@@ -14,7 +14,7 @@ gulp.task("browser-sync", function() {
 });
 
 gulp.task("build:css", function() {
-  return gulp.src("scss/*")
+  return gulp.src("scss/*.scss")
     .pipe(plumber())
     .pipe(sass.sync())
     .pipe(autoprefixer({
@@ -27,6 +27,6 @@ gulp.task("build:css", function() {
 });
 
 gulp.task("watch", ["browser-sync"], function() {
-  gulp.watch("scss/*", ["build:css"]);
+  gulp.watch("scss/**/*.scss", ["build:css"]);
   gulp.watch("*.html", browserSync.reload)
 });

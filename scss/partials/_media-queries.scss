@@ -1,0 +1,42 @@
+@media (min-width: 90em) {
+  html {
+    font-size: 1.05rem;
+  }
+}
+
+@media (max-width: 48em) {
+  html {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 30em) {
+  html {
+    font-size: 0.9rem;
+  }
+
+  .fork-me-ribbon {
+    display: none;
+  }
+
+  header {
+    .tagline {
+      padding-left: .5em;
+      padding-right: .5em;
+    }
+
+    .btn {
+      width: 90%;
+      margin: .5em 0;
+
+      + .btn {
+        margin-bottom: 3.5em;
+      }
+    }
+  }
+
+  .tldr .pros, .tldr .cons {
+    float: none !important;
+    width: 100% !important;
+  }
+}

@@ -1,0 +1,47 @@
+header {
+  background: $highlight;
+  color: $dark;
+  text-align: center;
+  position: relative;
+
+  .headline {
+    font-size: 4em;
+    margin: 0;
+    padding: 1em 0 1em;
+  }
+
+  .tagline {
+    font-size: 2em;
+    margin: 0;
+    padding: 0 0 2em;
+  }
+
+  .btn {
+    text-decoration: none;
+    color: $dark;
+    padding: 0.6em;
+    font-weight: bold;
+    font-size: 1.2em;
+    border: 2px solid $dark;
+    border-radius: 4px;
+    margin: 0 1em 3.5em;
+    display: inline-block;
+
+    &:hover {
+      background: $dark;
+      color: $highlight;
+    }
+  }
+
+  &:after {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: 0px;
+    width: 100%;
+    height: $splitter-height;
+    background-image: url(../img/splitter-up.svg);
+    background-size: auto $splitter-height;
+  }
+}
