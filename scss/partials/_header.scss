@@ -1,5 +1,6 @@
 header {
   background: $highlight;
+  background: linear-gradient(135deg, lighten($highlight, 5%), darken($highlight, 5%));
   color: $dark;
   text-align: center;
   position: relative;

@@ -481,7 +481,8 @@ pre[class*="language-"] {
   cursor: help; }
 
 header {
-  background: #cfcf17;
+  background: #0697e0;
+  background: linear-gradient(135deg, #06a8f9, #0586c7);
   color: #050505;
   text-align: center;
   position: relative; }
@@ -505,7 +506,7 @@ header {
     display: inline-block; }
     header .btn:hover {
       background: #050505;
-      color: #cfcf17; }
+      color: #0697e0; }
   header:after {
     content: "";
     display: block;
@@ -518,12 +519,22 @@ header {
     background-size: auto 27px; }
 
 ::-moz-selection {
-  background-color: #cfcf17;
+  background-color: #0697e0;
   color: #050505;
   text-shadow: none; }
 
 ::selection {
-  background-color: #cfcf17;
+  background-color: #0697e0;
+  color: #050505;
+  text-shadow: none; }
+
+-moz-::-moz-selection {
+  background-color: #0697e0;
+  color: #050505;
+  text-shadow: none; }
+
+-moz-::selection {
+  background-color: #0697e0;
   color: #050505;
   text-shadow: none; }
 
@@ -558,7 +569,8 @@ main {
     border-bottom: 1px solid #050505; }
   main > * + * {
     margin-top: 3em; }
-  main ol, main ul {
+  main ol,
+  main ul {
     padding-left: 1em;
     margin-bottom: 0; }
   main li + li {
@@ -578,9 +590,9 @@ main {
       left: 0;
       bottom: 100%;
       padding: .1em .2em;
-      background: rgba(207, 207, 23, 0.95);
+      background: rgba(6, 151, 224, 0.95);
       font-size: .8em;
-      color: #050505;
+      color: #F7F7F7;
       border-radius: 1px;
       white-space: nowrap; }
     main a[href*="//"]:not([href*="pinjasaur.github.io/templater.js/"]):hover:after {

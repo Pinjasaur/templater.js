@@ -4,6 +4,12 @@
   text-shadow: none;
 }
 
+-moz-::selection {
+  background-color: $highlight;
+  color: $dark;
+  text-shadow: none;
+}
+
 *, *:before, *:after {
   box-sizing: border-box;
 }
@@ -45,7 +51,8 @@ main {
     margin-top: 3em;
   }
 
-  ol, ul {
+  ol,
+  ul {
     padding-left: 1em;
     margin-bottom: 0;
   }
@@ -78,7 +85,7 @@ main {
       padding: .1em .2em;
       background: rgba($highlight, .95);
       font-size: .8em;
-      color: $dark;
+      color: $light;
       border-radius: 1px;
       white-space: nowrap;
     }
