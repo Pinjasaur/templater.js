@@ -60,13 +60,15 @@
       for (var prop in data) {
         // create the regex to match the '{{ prop }}' format
         regex = "{{\\s?" + prop + "\\s?}}";
-        // replace the instances in the template with the property value (escaping &, <, and > if necessary)
-        template = template.replace(new RegExp(regex, "ig"), ("" + data[prop]).replace(/[&<>]/g, function(tag) {
-          // replace &, <, or > if necessary
+        // replace the instances in the template with the property value (escaping characters if necessary)
+        template = template.replace(new RegExp(regex, "ig"), ("" + data[prop]).replace(/[&<>"']/g, function(tag) {
+          // characters mapped to their entities
           var replacements = {
             "&": "&amp;",
             "<": "&lt;",
-            ">": "&gt;"
+            ">": "&gt;",
+            "\"": "&quot;",
+            "'": "&#39;"
           };
 
           return replacements[tag] || tag;

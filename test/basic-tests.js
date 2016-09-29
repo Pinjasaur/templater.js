@@ -26,4 +26,13 @@ describe("Basic Tests", function() {
 
     assert.equal(template(context), "Hi, I'm {{name}}. I'm 20 years old.");
   });
+
+  it("should escape certain characters when replacing template expressions", function() {
+    var template = templater("{{foo}}"),
+        context = {
+          foo: "<html> tag with 'single' & \"double\" quotes"
+        };
+
+    assert.equal(template(context), "&lt;html&gt; tag with &#39;single&#39; &amp; &quot;double&quot; quotes");
+  });
 });
