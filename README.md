@@ -1,27 +1,29 @@
 # templater.js
+
 Dead-simple JavaScript templating with a tiny<sup>1</sup> footprint. View the [website][homepage] for details & examples.
 
 Inspired by http://jsforallof.us/2014/12/01/the-anatomy-of-a-simple-templating-engine/ and http://krasimirtsonev.com/blog/article/Javascript-template-engine-in-just-20-line.
 
 <sup>1</sup> < 1KB after minification.
 
-## TODO
-
-- [x] setup testing w/ Chai + Mocha
-- [x] set up gulp for minification, etc
-- [x] beef up readme with usage, limitations, etc
-- [ ] create live demos (jsfiddle and/or codepen)
-- [ ] ~~0/1 spaces~~, ~~not #if~~, ~~use [] not hOP~~, ~~add `g` to regex~~
-
 ## Quick Start
 
-1. Load in the script
+1. Install the script
+
+    The script can be installed with [bower][bower], [npm][npm], or by grabbing the [latest release][latest] from GitHub.
+
+    ```sh
+    bower install templater.js # For Bower
+    npm install templater.js # For npm
+    ```
+
+2. Load in the script
 
     ```html
     <script src="path/to/templater.min.js"></script>
     ```
 
-2. Create the template
+3. Create the template
 
     ```html
     <!-- by giving it a non-standard `type` the browser will ignore it -->
@@ -34,7 +36,7 @@ Inspired by http://jsforallof.us/2014/12/01/the-anatomy-of-a-simple-templating-e
     </script>
     ```
 
-3. Use template and render to the DOM
+4. Use template and render to the DOM
 
     ```javascript
     var template = templater(document.getElementById("template").innerHTML);
@@ -144,3 +146,6 @@ Check out [CONTRIBUTING.md][CONTRIBUTING] for specifics.
 [CONTRIBUTING]: https://github.com/Pinjasaur/templater.js/blob/master/CONTRIBUTING.md
 [handlebars]: http://handlebarsjs.com/
 [homepage]: http://pinjasaur.github.io/templater.js/
+[bower]: https://bower.io/
+[npm]: https://www.npmjs.com/
+[latest]: https://github.com/Pinjasaur/templater.js/releases/latest
