@@ -1,6 +1,6 @@
 # templater.js
 
-Dead-simple JavaScript templating with a tiny<sup>1</sup> footprint. View the [website][homepage] for details & examples.
+Dead-simple JavaScript templating with a tiny<sup>1</sup> footprint. View the [website][homepage] for extended details & documentation.
 
 Inspired by http://jsforallof.us/2014/12/01/the-anatomy-of-a-simple-templating-engine/ and http://krasimirtsonev.com/blog/article/Javascript-template-engine-in-just-20-line.
 
@@ -19,8 +19,14 @@ Inspired by http://jsforallof.us/2014/12/01/the-anatomy-of-a-simple-templating-e
 
 2. Load in the script
 
+    If in a browser environment, with a `<script>` tag
     ```html
     <script src="path/to/templater.min.js"></script>
+    ```
+    
+    Or, if in a Node.js environment with a `require()`
+    ```js
+    var templater = require("templater");
     ```
 
 3. Create the template
@@ -28,24 +34,19 @@ Inspired by http://jsforallof.us/2014/12/01/the-anatomy-of-a-simple-templating-e
     ```html
     <!-- by giving it a non-standard `type` the browser will ignore it -->
     <script id="template" type="text/template">
-      <h1>Hi, I'm {{ name }}.</h1>
-      {{ #if (age) }}
-        <p>I am {{ age }} years old.</p>
-      {{ /if }}
-      <p><b>About me: </b> {{ bio }}</p>
+    <h1>Hi, I'm {{name}}.</h1>
     </script>
     ```
 
-4. Use template and render to the DOM
+4. Use template and render it against some data
 
     ```javascript
-    var template = templater(document.getElementById("template").innerHTML);
+    var template = templater(document.getElementById("template").innerHTML),
+        context = {
+          name: "Paul"
+        };
 
-    document.body.insertAdjacentHTML("beforeend", template({
-      name: "John Smith",
-      age: 20,
-      bio: "<insert biography here>"
-    }));
+    console.log(template(context)); // <h1>Hi, I'm Paul.</h1>
     ```
 
 ## Syntax
