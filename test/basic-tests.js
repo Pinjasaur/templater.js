@@ -3,10 +3,16 @@ var templater = require("./../src/templater.js"),
     assert = chai.assert;
 
 describe("Basic Tests", function() {
+  it("should return a function when called with a template", function() {
+    var template = templater("A string.");
+
+    assert.equal(typeof template, "function");
+  });
+
   it("should replace values in template with respective values in context", function() {
     var template = templater("{{name}}"),
-        context = { 
-          name: "Paul" 
+        context = {
+          name: "Paul"
         };
 
     assert.equal(template(context), "Paul");
