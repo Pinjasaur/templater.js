@@ -26,7 +26,7 @@ gulp.task("build:css", function() {
     }));
 });
 
-gulp.task("watch", ["browser-sync"], function() {
+gulp.task("serve", ["browser-sync"], function() {
   gulp.watch("scss/**/*.scss", ["build:css"]);
   gulp.watch("*.html", browserSync.reload)
 });
