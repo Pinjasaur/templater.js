@@ -40,7 +40,7 @@
         // the arguments were `truthy`
         meetsConditions = notted ^ meetsConditions;
 
-        // check if it meets the conditions
+        // check if it doesn't meet the conditions
         if (!meetsConditions) {
           // wipe the #if, /if, and body if it doesn't
           template = template.split(match[0]).join("");
