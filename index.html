@@ -64,15 +64,20 @@
     <section class="language-markup">
       <h2>Getting Started</h2>
       <ol>
+        <li>Install the script:
+          <p>You can install it with bower, npm, or from the <a href="https://github.com/Pinjasaur/templater.js/releases/latest">latest release</a> from GitHub.</p>
+          <pre class="language-bash"><code>bower install templater.js # for bower
+npm install templater.js # for npm</code></pre>
+        </li>
         <li>Add the script to your HTML document:
-        <pre><code>&lt;script src="path/to/templater.min.js">&lt;/script></code></pre>
+        <pre><code>&lt;script src="path/to/templater.min.js"&gt;&lt;/script&gt;</code></pre>
         </li>
         <li>Create the template you'd like to use:</li>
-        <pre class="language-markup"><code>&lt;!-- by using a non-standard `type` the browser won't parse it -->
-&lt;script id="my-template" type="text/template">
-  &lt;h2>Hi, my name is {{ name }}.&lt;/h2>
-  &lt;p>I am {{ age }} years old and live in {{ location }}.&lt;/p>
-&lt;/script></code></pre>
+        <pre class="language-markup"><code>&lt;!-- by using a non-standard `type` the browser won't parse it --&gt;
+&lt;script id="my-template" type="text/template"&gt;
+  &lt;h2&gt;Hi, my name is {{ name }}.&lt;/h2&gt;
+  &lt;p&gt;I am {{ age }} years old and live in {{ location }}.&lt;/p&gt;
+&lt;/script&gt;</code></pre>
         <li>Parse the template against some data and render it to the DOM:
         <pre class="language-js"><code>var template = templater(document.getElementById("my-template").innerHTML);
 
