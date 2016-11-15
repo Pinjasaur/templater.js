@@ -41,7 +41,7 @@
   <main>
     <section class="tldr clearfix">
       <h2>tl;dr</h2>
-      <p>templater.js is a teeny JavaScript library for minimal templating. Its templating expression syntax mimics that of {{mustache}}/Handlebars. Barebones conditional logic included.</p>
+      <p>templater.js is a teeny JavaScript library for minimal (String + JSON &rarr; Template) templating. Its templating expression syntax mimics that of <a href="https://mustache.github.io/">{{mustache}}</a>. Barebones conditional logic included.</p>
 
       <div class="pros language-js">
         <h3>Features</h3>
@@ -115,47 +115,48 @@ template(data); // Hi, my name is Paul.</code></pre>
     <section>
       <h2>Syntax</h2>
       <h3>Expressions</h3>
-      <p>Syntax mimics {{mustache}}/Handlebars: <code>{{ contents }}</code> where <code>contents</code> represents what you'd like to replace when the template is rendered against some data. Note that the amount of whitespace between <code>contents</code> and the two braces doesn't matter. For example, the following are all equivalent:</p>
+      <p>Syntax mimics <a href="https://mustache.github.io/">{{mustache}}</a> et al.: <code>{{ contents }}</code> where <code>contents</code> represents what you'd like to replace when the template is rendered against some data. Note that the amount of whitespace between <code>contents</code> and the two braces is limited to zero (0) or one (1). For example, the following are all valid:</p>
 
       <ul>
         <li><code>{{contents}}</code></li>
-        <li><code>{{&nbsp;&nbsp;&nbsp;&nbsp;contents}}</code></li>
-        <li><code>{{contents&nbsp;&nbsp;&nbsp;}}</code></li>
-        <li><code>{{&nbsp;&nbsp;&nbsp;contents&nbsp;&nbsp;&nbsp;&nbsp;}}</code></li>
+        <li><code>{{ contents}}</code></li>
+        <li><code>{{contents }}</code></li>
+        <li><code>{{ contents }}</code></li>
       </ul>
 
-      <p>However, for the sake of readability I would recommend using 0 or 1 spaces between the braces and the expression body.</p>
+      <p>However, for the sake of readability I would recommend consistently sticking to 0 or 1 spaces.</p>
 
       <h3>Conditionals</h3>
-      <p>You can use a <code>#if</code> directive to conditionally render template contents based on the truthy value of the arguments. The syntax looks like:</p>
+      <p>You can use a <code>#if</code> directive to conditionally render template contents based on the <a href="https://developer.mozilla.org/en-US/docs/Glossary/truthy">truthy</a> value of the arguments. The syntax looks like:</p>
       <pre class="language-markup"><code>{{ #if (condition) }}
   &lt;!-- this only renders if `condition` evaluates to a truthy value -->
-  <p>My conditional contents: {{ contents }}</p>
 {{ /if }}</code></pre>
 
-      <p>To provide multiple arguments to the condition, just separate them by commas: <code>{{ #if (foo, bar, baz) }}</code></p>
+      <p>To provide multiple arguments to the condition, just separate them by commas: <code>{{ #if (foo, bar, baz) }}</code>. The comma acts as an <strong>AND</strong> operator: all the operands must evaulate to <a href="https://developer.mozilla.org/en-US/docs/Glossary/truthy"><em>truthy</em></a> for the condition to be considered true.</p>
 
-      <p>For example, given the following template snippet</p><pre class="language-markup"><code>{{ #if (name, age) }}
-  &lt;p>Hi, my name is {{ name }} and I am {{ age }} years old.&lt;/p>
-{{ /if }}</code></pre>
-      <p>rendered against the following</p><pre class="language-js"><code>{
+      <p>If desired, you can <strong>NOT</strong> the entire conditon by using a bang (<code>!</code>).</p>
+
+      <p>For example, given the following data</p>
+      <pre class="language-js"><code>{
   name: "John",
-  age: 27
+  age: 27,
+  likesCookies: false
 }</code></pre>
-    <p>will produce</p><pre class="language-markup"><code>&lt;p>Hi, my name is John and I am 27 years old.&lt;/p></code></pre>
-    <p>however, rendered against data where <code>name</code> or <code>age</code> is falsy</p><pre class="language-js"><code>{
-  name: "John",
-  age: 0
-}</code></pre>
-    <p>the body of the <code>#if</code> condition won't be rendered.</p>
+    <p>the following conditionals will evaluate to truthy (and thus be rendered)</p>
+    <pre class="language-markup"><code>{{ #if !(likesCookies) }}
+{{ #if (name, age)}}</code></pre>
+    <p>however, the following will evaluate to falsy (and will not be rendered)</p>
+    <pre><code>{{ #if (name, age, likesCookies) }}
+{{ #if (likesCookies) }}</code></pre>
+
     </section>
     <section>
       <h2>Limitations</h2>
       <h3>Nested <code>#if</code>s</h3>
-      <p>Due to how the templating is handled (regular expressions) nested <code>#if</code> statements will not work. The script won't complain, but the desired logic will not be achieved.</p>
+      <p>Due to how the templating is handled (regular expressions) nested <code>#if</code> statements will not work.</p>
 
       <h3>Nested properties</h3>
-      <p>Once again, due to how the replacement in the templating is done, nested properties will not work; <code>{{ foo.bar.baz }}</code> will look for a <em>property</em> named "foo.bar.baz" not the property <code>baz</code> of the property <code>bar</code> of the property <code>foo</code>.</p>
+      <p>Once again, due to how the replacement in the templating is done, nested properties will not work; <code>{{ foo.bar.baz }}</code> will look for a <em>property</em> named <code>foo.bar.baz</code> not the property <code>baz</code> of the property <code>bar</code> of the property <code>foo</code>.</p>
     </section>
     <section>
       <h2>Contributing</h2>
