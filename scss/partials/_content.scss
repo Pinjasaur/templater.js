@@ -29,6 +29,13 @@ a:hover {
   text-decoration: none;
 }
 
+:root :not(pre) > code {
+  display: inline-block;
+  padding: .1em .2em;
+  border: 1px solid darken($light, 20%);
+  color: $highlight;
+}
+
 main {
   max-width: 60rem;
   margin-left: auto;
@@ -81,14 +88,6 @@ main {
   pre[class*="language-"] {
     font-family: Inconsolata, Consolas, Monaco, monospace;
   }
-
-  :not(pre) > code {
-    display: inline-block;
-    padding: .1em .2em;
-    border: 1px solid darken($light, 20%);
-    color: $highlight;
-  }
-
 
   a {
     color: $dark;
