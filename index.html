@@ -93,14 +93,17 @@ template(data); // Hi, my name is Paul.</code></pre>
 
       <h3>Parsing</h3>
       <p>
-        To load a template into templater.js, simply call <code>templater</code> and pass in the template. This will return a function, so the return value needs to be assigned to a variable.
+        To load a template into templater.js, simply call <code>templater</code> and pass in the template.
+        This will return a function, so the return value needs to be assigned to a variable.
 
         <pre><code>var template = templater(tmpl);</code></pre>
       </p>
 
       <h3>Rendering</h3>
       <p>
-        To render the parsed template against some data, simply call the function returned when the template was parsed and pass in the data. It will return the rendered template as a string.
+        To render the parsed template against some data, simply call the function returned when the template was parsed and pass in the data.
+        It will return the rendered template as a string.
+        It can be called multiple times, against different sets of data, if desired.
 
         <pre><code>template(data); // Returns rendered template, as a string</code></pre>
       </p>
@@ -134,7 +137,7 @@ template(data); // Hi, my name is Paul.</code></pre>
 
       <p>To provide multiple arguments to the condition, just separate them by commas: <code>{{ #if (foo, bar, baz) }}</code>. The comma acts as an <strong>AND</strong> operator: all the operands must evaulate to <a href="https://developer.mozilla.org/en-US/docs/Glossary/truthy"><em>truthy</em></a> for the condition to be considered true.</p>
 
-      <p>If desired, you can <strong>NOT</strong> the entire conditon by using a bang (<code>!</code>).</p>
+      <p>If desired, you can <strong>NOT</strong> the entire conditon by using a bang (e.g. <code>{{ #if !(foo, bar, baz) }}</code> ).</p>
 
       <p>For example, given the following data</p>
       <pre class="language-js"><code>{
