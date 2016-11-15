@@ -61,7 +61,7 @@
         </ul>
       </div>
     </section>
-    <section class="language-markup">
+    <section class="language-js">
       <h2>Getting Started</h2>
       <ol>
         <li>Install the script:
@@ -71,23 +71,46 @@ npm install templater.js # for npm</code></pre>
         </li>
         <li>Add the script to your HTML document:
         <pre><code>&lt;script src="path/to/templater.min.js"&gt;&lt;/script&gt;</code></pre>
+        Or if you're in a Node.js environemnt:
+        <pre><code>var templater = require("templater");</code></pre>
         </li>
-        <li>Create the template you'd like to use:</li>
-        <pre class="language-markup"><code>&lt;!-- by using a non-standard `type` the browser won't parse it --&gt;
-&lt;script id="my-template" type="text/template"&gt;
-  &lt;h2&gt;Hi, my name is {{ name }}.&lt;/h2&gt;
-  &lt;p&gt;I am {{ age }} years old and live in {{ location }}.&lt;/p&gt;
-&lt;/script&gt;</code></pre>
-        <li>Parse the template against some data and render it to the DOM:
-        <pre class="language-js"><code>var template = templater(document.getElementById("my-template").innerHTML);
+        <li>Create the template you'd like to use:
+        <pre><code>var tmpl = "Hi, my name is {{ name }}."</code></pre>
+        </li>
+        <li>Parse the template against some data and render it:
+        <pre><code>var template = templater(tmpl),
+    data = {
+      name: "Paul"
+    };
 
-document.body.insertAdjacentHTML("beforeend", template({
-  name: "John",
-  age: 27,
-  location: "The United States"
-});</code></pre>
+template(data); // Hi, my name is Paul.</code></pre>
         </li>
       </ol>
+    </section>
+    <section class="language-js">
+      <h2>API</h2>
+      <p>templater.js exposes a very simple and minimal API. In the following code snippets, <code>tmpl</code> and <code>data</code> will be referenced, which are simply the template as a string and the data as an object, respectively.</p>
+
+      <h3>Parsing</h3>
+      <p>
+        To load a template into templater.js, simply call <code>templater</code> and pass in the template. This will return a function, so the return value needs to be assigned to a variable.
+
+        <pre><code>var template = templater(tmpl);</code></pre>
+      </p>
+
+      <h3>Rendering</h3>
+      <p>
+        To render the parsed template against some data, simply call the function returned when the template was parsed and pass in the data. It will return the rendered template as a string.
+
+        <pre><code>template(data); // Returns rendered template, as a string</code></pre>
+      </p>
+
+      <h3>All At Once</h3>
+      <p>
+        Of course, you can combine the two function calls into one step, if desired.
+
+        <pre><code>templater(tmpl)(data); // Rendered template</code></pre>
+      </p>
     </section>
     <section>
       <h2>Syntax</h2>
