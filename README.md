@@ -1,5 +1,9 @@
 # templater.js
 
+[![Travis](https://img.shields.io/travis/pinjasaur/templater.js/master.svg)](https://travis-ci.org/Pinjasaur/templater.js)
+[![npm](https://img.shields.io/npm/l/templater.js.svg)](https://www.npmjs.com/package/templater.js)
+
+
 Dead-simple JavaScript templating with a tiny<sup>1</sup> footprint. View the [website][homepage] for extended details & documentation.
 
 Inspired by http://jsforallof.us/2014/12/01/the-anatomy-of-a-simple-templating-engine/ and http://krasimirtsonev.com/blog/article/Javascript-template-engine-in-just-20-line.
