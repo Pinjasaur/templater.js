@@ -1,0 +1,21 @@
+{
+  "name": "templater.js",
+  "description": "Minimal JavaScript templating.",
+  "main": "dist/templater.js",
+  "authors": [
+    "Paul Esch-Laurent"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "javascript",
+    "templating"
+  ],
+  "homepage": "https://github.com/Pinjasaur/templater.js",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
