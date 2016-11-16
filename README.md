@@ -1,7 +1,7 @@
 # templater.js
 
-[![Travis](https://img.shields.io/travis/pinjasaur/templater.js/master.svg)](https://travis-ci.org/Pinjasaur/templater.js)
-[![npm](https://img.shields.io/npm/l/templater.js.svg)](https://www.npmjs.com/package/templater.js)
+[![Travis Build](https://img.shields.io/travis/Pinjasaur/templater.js.svg)](https://travis-ci.org/Pinjasaur/templater.js)
+[![GitHub License](https://img.shields.io/github/license/Pinjasaur/templater.js.svg)](https://github.com/Pinjasaur/templater.js)
 
 
 Dead-simple JavaScript templating with a tiny<sup>1</sup> footprint. View the [website][homepage] for extended details & documentation.
