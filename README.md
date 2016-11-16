@@ -13,7 +13,7 @@ Inspired by http://jsforallof.us/2014/12/01/the-anatomy-of-a-simple-templating-e
     The script can be installed with [bower][bower], [npm][npm], or by grabbing the [latest release][latest] from GitHub.
 
     ```sh
-    bower install templater.js # For Bower
+    bower install templaterjs # For Bower
     npm install templater.js # For npm
     ```
 
