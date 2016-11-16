@@ -26,7 +26,7 @@ Inspired by http://jsforallof.us/2014/12/01/the-anatomy-of-a-simple-templating-e
     
     Or, if in a Node.js environment with a `require()`
     ```js
-    var templater = require("templater");
+    var templater = require("templater.js");
     ```
 
 3. Create the template
