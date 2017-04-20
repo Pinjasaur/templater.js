@@ -1,6 +1,6 @@
 {
   "name": "templater.js",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Minimal JavaScript templating.",
   "main": "dist/templater.js",
   "scripts": {
