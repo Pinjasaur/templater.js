@@ -4,6 +4,52 @@
 
   function templater(template) {
 
+    /**
+     * Resolves values for an object given a property in dot-notation form.
+     * @param  {Object} haystack The object to search
+     * @param  {String} needle   The property to search for
+     * @return {*}               The value found
+     */
+    function resolve(haystack, needle) {
+
+      if (haystack[needle]) {
+
+        return haystack[needle];
+
+      } else {
+
+        var needles = needle.split("."),
+            prop    = needles.shift();
+
+        if (haystack[prop]) {
+          return resolve(haystack[prop], needles.join("."));
+        }
+
+        return null;
+
+      }
+    }
+
+    /**
+     * Traverses an object and returns all properties in dot-notation form.
+     * @param  {Object} obj Object to traverse
+     * @param  {Array}  arr Array to push properties to
+     * @param  {String} ctx Current object context (used in recursive calls)
+     * @return None
+     */
+    function traverse(obj, arr, ctx) {
+
+      for (var prop in obj) {
+
+        if (typeof obj[prop] !== "object") {
+          arr.push((ctx !== undefined) ? ctx + "." + prop : prop);
+        } else {
+          traverse(obj[prop], arr, (ctx !== undefined) ? ctx + "." + prop : prop);
+        }
+
+      }
+    }
+
     // return a function to use the replacement values
     return function(data) {
 
@@ -13,31 +59,35 @@
           regex = start + "[\\s\\S]+?" + end,
           // save a reference to the template so it can be restored at the end
           tmpl = template,
-          match, notted, conditions, meetsConditions;
+          props = [],
+          match;
+
+      // get all properties with values
+      traverse(data, props);
 
       // keep matching conditions until there are none
       while (match = new RegExp(regex, "ig").exec(template)) {
 
         // assume it meets all conditions
-        meetsConditions = true;
+        var meetsConditions = true;
 
         // if a match for /(!)?/ was found, it's `notted`
-        notted = !!match[1];
+        var notted = !!match[1];
 
         // remove all whitespace between conditions, split on commas
-        conditions = match[2].replace(/\s+/g, "").split(",");
+        var conditions = match[2].replace(/\s+/g, "").split(",");
 
         // check each condition to see if it's truthy
         for (var i = 0; i < conditions.length; i++) {
           // if it isn't, break out
-          if (!data[conditions[i]]) {
+          if (!resolve(data, conditions[i])) {
             meetsConditions = false;
             break;
           }
         }
 
-        // perform an XOR operation based on if the #if was notted (!) and whether all
-        // the arguments were `truthy`
+        // perform an XOR operation based on if the #if was notted (!) and
+        // whether all the arguments were `truthy`
         meetsConditions = notted ^ meetsConditions;
 
         // check if it doesn't meet the conditions
@@ -46,7 +96,9 @@
           template = template.split(match[0]).join("");
         } else {
           // otherwise just get rid of the #if and /if statements
-          var open = new RegExp(start, "ig"), close = new RegExp(end, "ig");
+          var open = new RegExp(start, "ig"),
+              close = new RegExp(end, "ig");
+
           // beginning of the template
           template = template.substring(0, match["index"])
               // body of the condition
@@ -57,23 +109,29 @@
       }
 
       // loop through each property of the data
-      for (var prop in data) {
+      props.forEach(function(prop) {
         // create the regex to match the '{{ prop }}' format
         regex = "{{\\s?" + prop + "\\s?}}";
-        // replace the instances in the template with the property value (escaping characters if necessary)
-        template = template.replace(new RegExp(regex, "ig"), ("" + data[prop]).replace(/[&<>"']/g, function(tag) {
+
+        // get the value depending on type, casted to string
+        var value = resolve(data, prop);
+        value = String((typeof value === "function") ? value() : value);
+
+        // replace the instances in the template with the property value
+        // (escaping characters if necessary)
+        template = template.replace(new RegExp(regex, "ig"), value.replace(/[&<>"']/g, function(tag) {
           // characters mapped to their entities
           var replacements = {
             "&": "&amp;",
             "<": "&lt;",
             ">": "&gt;",
-            "\"": "&quot;",
+            '"': "&quot;",
             "'": "&#39;"
           };
 
           return replacements[tag] || tag;
         }));
-      }
+      });
 
       // set the template back to its original state (so it can be used again)
       var ret = template;
