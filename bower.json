@@ -1,6 +1,6 @@
 {
   "name": "templater.js",
-  "version": "1.0.3",
+  "version": "2.0.0",
   "description": "Minimal JavaScript templating.",
   "main": "dist/templater.js",
   "authors": [
@@ -11,7 +11,7 @@
     "javascript",
     "templating"
   ],
-  "homepage": "https://github.com/Pinjasaur/templater.js",
+  "homepage": "https://pinjasaur.github.io/templater.js/",
   "ignore": [
     "**/.*",
     "node_modules",
