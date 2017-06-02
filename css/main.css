@@ -650,7 +650,7 @@ footer {
 @media (max-width: 30em) {
   html {
     font-size: 0.9rem; }
-  .fork-me-ribbon {
+  .github-corner {
     display: none; }
   header .tagline {
     padding-left: .5em;
