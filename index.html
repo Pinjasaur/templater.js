@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>templater.js | minimal JavaScript templating</title>
-    
+
     <link href="https://fonts.googleapis.com/css?family=Roboto|Inconsolata" rel="stylesheet">
     <link href="css/main.css" rel="stylesheet">
 
@@ -32,7 +32,7 @@
     <h3 class="tagline">A tiny JS library for minimal <code>{{templating}}</code>.</h3>
 
     <a href="https://raw.githubusercontent.com/Pinjasaur/templater.js/master/dist/templater.min.js" class="btn" download>Download &rarr;</a>
-    <a href="https://github.com/Pinjasaur/templater.js" class="btn">GitHub Project &rarr;</a>
+    <a href="https://github.com/Pinjasaur/templater.js" class="btn">GitHub &rarr;</a>
 
     <!-- Fork me on GitHub ribbon -->
     <a href="https://github.com/Pinjasaur/templater.js" class="fork-me-ribbon"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
@@ -50,7 +50,7 @@
             <li>No <code>eval()</code>s or <code>new Function() { &hellip; }</code>s</li>
             <li>HTML characters automatically escaped</li>
             <li>Node.js and browser compatible</li>
-            <li>&lt; 1KB after minification</li>
+            <li>&lt; 1KB minified + gzipped</li>
             <li>Zero dependencies</li>
           </ul>
         </div>
@@ -58,11 +58,12 @@
           <h3>Limitations</h3>
           <ul>
             <li>Cannot nest <code>#if</code> statements</li>
-            <li>Cannot nest properties (e.g. <code>{{foo.bar.baz}}</code>)</li>
+            <li>Property names cannot contain periods</li>
+            <li>Use dot-notation for arrays (e.g. <code>{{array[0]}}</code> &rarr; <code>{{array.0}}</code>)</li>
           </ul>
         </div>
       </div>
-      
+
       <h3>Demo</h3>
       <p data-height="265" data-theme-id="dark" data-slug-hash="ENgZWx" data-default-tab="js,result" data-user="Pinjasaur" data-embed-version="2" data-pen-title="templater.js Demo" class="codepen">See the Pen <a href="https://codepen.io/Pinjasaur/pen/ENgZWx/">templater.js Demo</a> by Paul Esch-Laurent (<a href="http://codepen.io/Pinjasaur">@Pinjasaur</a>) on <a href="http://codepen.io">CodePen</a>.</p>
       <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
@@ -71,7 +72,7 @@
       <h2>Getting Started</h2>
       <ol>
         <li>Install the script:
-          <p>You can install it with bower, npm, or from the <a href="https://github.com/Pinjasaur/templater.js/releases/latest">latest release</a> on GitHub.</p>
+          <p>You can install it with Bower, npm/yarn, or from the <a href="https://github.com/Pinjasaur/templater.js/releases/latest">latest release</a> on GitHub.</p>
           <pre class="language-bash"><code>bower install templaterjs # for Bower
 npm install templater.js # for npm</code></pre>
         </li>
@@ -135,8 +136,24 @@ template(data); // Hi, my name is Paul.</code></pre>
 
       <p>However, for the sake of readability I would recommend consistently sticking to 0 or 1 spaces.</p>
 
+      <h3>Nested properties</h3>
+      <p>You can access nested properties like so: <code>{{foo.bar.baz}}</code>. If it's an array, use dot-notation: <code>{{array[0]}}</code> &rarr; <code>{{array.0}}</code>.</p>
+
+      <p><strong>Note:</strong> properties cannot contain periods, as it will be evaluated as a nested property.</p>
+
+      <h3>Functions</h3>
+      <p>If the property referenced corresponds to a function, the evaluated function will be used in the template.</p>
+
+      <p>For example, given the following data</p>
+      <pre class="language-js"><code>{
+  fn: function() {
+    return 2 + 2;
+  }
+}</code></pre>
+      <p>and referenced in a template like <code>{{fn}}</code>, then the rendered result would be <code>4</code>.</p>
+
       <h3>Conditionals</h3>
-      <p>You can use a <code>#if</code> directive to conditionally render template contents based on the <a href="https://developer.mozilla.org/en-US/docs/Glossary/truthy">truthy</a> value of the arguments. The syntax looks like:</p>
+      <p>You can use an <code>#if</code> directive to conditionally render template contents based on the <a href="https://developer.mozilla.org/en-US/docs/Glossary/truthy">truthy</a> value of the arguments. The syntax looks like:</p>
       <pre class="language-markup"><code>{{ #if (condition) }}
   &lt;!-- this only renders if `condition` evaluates to a truthy value -->
 {{ /if }}</code></pre>
@@ -155,7 +172,7 @@ template(data); // Hi, my name is Paul.</code></pre>
     <pre class="language-markup"><code>{{ #if !(likesCookies) }}
 {{ #if (name, age)}}</code></pre>
     <p>however, the following will evaluate to falsy (and will not be rendered)</p>
-    <pre><code>{{ #if (name, age, likesCookies) }}
+    <pre class="language-markup"><code>{{ #if (name, age, likesCookies) }}
 {{ #if (likesCookies) }}</code></pre>
 
     </section>
@@ -165,7 +182,15 @@ template(data); // Hi, my name is Paul.</code></pre>
       <p>Due to how the templating is handled (regular expressions) nested <code>#if</code> statements will not work.</p>
 
       <h3>Nested properties</h3>
-      <p>Once again, due to how the replacement in the templating is done, nested properties will not work; <code>{{ foo.bar.baz }}</code> will look for a <em>property</em> named <code>foo.bar.baz</code> not the property <code>baz</code> of the property <code>bar</code> of the property <code>foo</code>.</p>
+      <p>Due to how nested properties are evaluated, the following should be taken into consideration:</p>
+      <ul>
+        <li>
+          <p>Property names cannot contain periods</p>
+        </li>
+        <li>
+          <p>Accessing an array requires use of dot-notation: <code>{{array[0]}}</code> &rarr; <code>{{array.0}}</code></p>
+        </li>
+      </ul>
     </section>
     <section>
       <h2>Contributing</h2>
@@ -175,11 +200,11 @@ template(data); // Hi, my name is Paul.</code></pre>
   </main>
 
   <footer>
-    <p>A thing by <a href="http://github.com/pinjasaur"><code>{{author}}</code></a>.</p>
+    <p>A thing by <a href="https://paulisaweso.me"><code>{{author}}</code></a>.</p>
   </footer>
 
   <script src="js/prism.js"></script>
-  
+
   <!-- Google Analytics -->
   <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

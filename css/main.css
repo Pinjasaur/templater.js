@@ -528,16 +528,6 @@ header {
   color: #050505;
   text-shadow: none; }
 
--moz-::-moz-selection {
-  background-color: #0697e0;
-  color: #050505;
-  text-shadow: none; }
-
--moz-::selection {
-  background-color: #0697e0;
-  color: #050505;
-  text-shadow: none; }
-
 *, *:before, *:after {
   box-sizing: border-box; }
 
