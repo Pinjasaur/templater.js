@@ -30,3 +30,5 @@ gulp.task("serve", ["browser-sync"], function() {
   gulp.watch("scss/**/*.scss", ["build:css"]);
   gulp.watch("*.html", browserSync.reload)
 });
+
+gulp.task("default", ["serve"]);
