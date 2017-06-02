@@ -8,13 +8,13 @@ Dead-simple JavaScript templating with a tiny<sup>1</sup> footprint. View the [w
 
 Inspired by http://jsforallof.us/2014/12/01/the-anatomy-of-a-simple-templating-engine/ and http://krasimirtsonev.com/blog/article/Javascript-template-engine-in-just-20-line.
 
-<sup>1</sup> < 1KB after minification.
+<sup>1</sup> < 1KB minified + gzipped.
 
 ## Quick Start
 
 1. Install the script
 
-    The script can be installed with [bower][bower], [npm][npm], or by grabbing the [latest release][latest] from GitHub.
+    The script can be installed with [Bower][bower], [npm][npm], or by grabbing the [latest release][latest] from GitHub.
 
     ```sh
     bower install templaterjs # For Bower
@@ -64,7 +64,6 @@ If you'd like to fork the repo and submit pull request, please feel free.
 Check out [CONTRIBUTING.md][CONTRIBUTING] for specifics.
 
 [CONTRIBUTING]: https://github.com/Pinjasaur/templater.js/blob/master/CONTRIBUTING.md
-[handlebars]: http://handlebarsjs.com/
 [homepage]: http://pinjasaur.github.io/templater.js/
 [bower]: https://bower.io/
 [npm]: https://www.npmjs.com/
