@@ -32,13 +32,23 @@ describe("Basic Tests", function() {
     assert.equal(template(context), 4);
   });
 
-  it("should not replace values in template that don't exist in the context", function() {
+  it("should not replace values in template that don't exist in the context (undefined)", function() {
     var template = templater("Hi, I'm {{name}}. I'm {{age}} years old."),
     context = {
       age: 21
     };
 
     assert.equal(template(context), "Hi, I'm {{name}}. I'm 21 years old.");
+  });
+
+  it("should not replace values in template that don't exist in the context (case-sensitive)", function() {
+    var template = templater("Hi, I'm {{Name}}. I'm {{age}} years old."),
+    context = {
+      name: "Paul",
+      age: 21
+    };
+
+    assert.equal(template(context), "Hi, I'm {{Name}}. I'm 21 years old.");
   });
 
   it("should escape certain characters when replacing template expressions", function() {

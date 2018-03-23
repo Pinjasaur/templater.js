@@ -66,7 +66,7 @@
       traverse(data, props);
 
       // keep matching conditions until there are none
-      while (match = new RegExp(regex, "ig").exec(template)) {
+      while (match = new RegExp(regex, "g").exec(template)) {
 
         // assume it meets all conditions
         var meetsConditions = true;
@@ -96,8 +96,8 @@
           template = template.split(match[0]).join("");
         } else {
           // otherwise just get rid of the #if and /if statements
-          var open = new RegExp(start, "ig"),
-              close = new RegExp(end, "ig");
+          var open = new RegExp(start, "g"),
+              close = new RegExp(end, "g");
 
           // beginning of the template
           template = template.substring(0, match["index"])
@@ -119,7 +119,7 @@
 
         // replace the instances in the template with the property value
         // (escaping characters if necessary)
-        template = template.replace(new RegExp(regex, "ig"), value.replace(/[&<>"']/g, function(tag) {
+        template = template.replace(new RegExp(regex, "g"), value.replace(/[&<>"']/g, function(tag) {
           // characters mapped to their entities
           var replacements = {
             "&": "&amp;",
