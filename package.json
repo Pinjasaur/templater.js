@@ -19,13 +19,13 @@
   "devDependencies": {
     "chai": "^4.0.1",
     "gulp": "^3.9.1",
-    "gulp-clean": "^0.3.2",
-    "gulp-header": "^1.8.2",
+    "gulp-clean": "0.4",
+    "gulp-header": "2",
     "gulp-jshint": "^2.0.1",
     "gulp-load-plugins": "^1.3.0",
     "gulp-rename": "^1.2.2",
     "gulp-uglify": "^3.0.0",
     "jshint": "^2.9.2",
-    "mocha": "^3.2.0"
+    "mocha": "5"
   }
 }
