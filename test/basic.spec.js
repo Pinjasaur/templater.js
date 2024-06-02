@@ -59,4 +59,15 @@ describe("Basic Tests", function() {
 
     assert.equal(template(context), "&lt;html&gt; tag with &#39;single&#39; &amp; &quot;double&quot; quotes");
   });
+	
+  it("should not escape certain characters escape has been disabled", function() {
+    var template = templater("{{foo}}"),
+        context = {
+          foo: "<html> tag with 'single' & \"double\" quotes",
+					should_escape: false
+        };
+
+    assert.equal(template(context), "<html> tag with 'single' & \"double\" quotes");
+  });
+
 });

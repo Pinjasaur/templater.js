@@ -60,8 +60,12 @@
           // save a reference to the template so it can be restored at the end
           tmpl = template,
           props = [],
+          should_escape = true,
           match;
 
+			if (data.should_escape !== undefined) {
+				should_escape = data.should_escape
+			}
       // get all properties with values
       traverse(data, props);
 
@@ -119,7 +123,9 @@
 
         // replace the instances in the template with the property value
         // (escaping characters if necessary)
-        template = template.replace(new RegExp(regex, "g"), value.replace(/[&<>"']/g, function(tag) {
+        template = template.replace(
+					new RegExp(regex, "g"), 
+					value.replace(/[&<>"']/g, function(tag) {
           // characters mapped to their entities
           var replacements = {
             "&": "&amp;",
@@ -129,7 +135,7 @@
             "'": "&#39;"
           };
 
-          return replacements[tag] || tag;
+          return should_escape ? replacements[tag] || tag : tag;
         }));
       });
 
