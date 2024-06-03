@@ -51,7 +51,7 @@
     }
 
     // return a function to use the replacement values
-    return function(data) {
+    return function(data, should_escape = true) {
 
       // regex for the #if, body, /if
       var start = "{{\\s?#if\\s+(!)?\\((.+)\\)\\s?}}",
@@ -60,12 +60,8 @@
           // save a reference to the template so it can be restored at the end
           tmpl = template,
           props = [],
-          should_escape = true,
           match;
 
-			if (data.should_escape !== undefined) {
-				should_escape = data.should_escape
-			}
       // get all properties with values
       traverse(data, props);
 

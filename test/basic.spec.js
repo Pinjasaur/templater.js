@@ -64,10 +64,9 @@ describe("Basic Tests", function() {
     var template = templater("{{foo}}"),
         context = {
           foo: "<html> tag with 'single' & \"double\" quotes",
-					should_escape: false
         };
 
-    assert.equal(template(context), "<html> tag with 'single' & \"double\" quotes");
+    assert.equal(template(context, false), "<html> tag with 'single' & \"double\" quotes");
   });
 
 });
