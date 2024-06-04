@@ -50,8 +50,19 @@
       }
     }
 
-    // return a function to use the replacement values
-    return function(data, should_escape = true) {
+    /**
+		 * @param {Object} data An object whose keys match the replacement strings
+		 *   in your template
+		 * @param {Object} opts An optional object containing options to use during
+		 *   template string replacement
+		 * @return Function to use the replacement values
+		 */
+    return function(data, opts) {
+			if (opts === undefined) {
+				opts = {
+					autoescape: true
+				}
+			}
 
       // regex for the #if, body, /if
       var start = "{{\\s?#if\\s+(!)?\\((.+)\\)\\s?}}",
@@ -131,7 +142,7 @@
             "'": "&#39;"
           };
 
-          return should_escape ? replacements[tag] || tag : tag;
+          return !!opts.autoescape ? replacements[tag] || tag : tag;
         }));
       });
 

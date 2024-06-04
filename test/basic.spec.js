@@ -66,7 +66,7 @@ describe("Basic Tests", function() {
           foo: "<html> tag with 'single' & \"double\" quotes",
         };
 
-    assert.equal(template(context, false), "<html> tag with 'single' & \"double\" quotes");
+    assert.equal(template(context, { autoescape: false }), "<html> tag with 'single' & \"double\" quotes");
   });
 
 });
