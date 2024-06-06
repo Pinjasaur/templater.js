@@ -1,6 +1,6 @@
 # templater.js
 
-[![Travis Build](https://img.shields.io/travis/Pinjasaur/templater.js.svg)](https://travis-ci.org/Pinjasaur/templater.js)
+![Build Status](https://github.com/Pinjasaur/templater.js/actions/workflows/ci.yml/badge.svg)
 [![GitHub License](https://img.shields.io/github/license/Pinjasaur/templater.js.svg)](https://github.com/Pinjasaur/templater.js)
 
 
