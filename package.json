@@ -1,6 +1,6 @@
 {
   "name": "templater.js",
-  "version": "3.0.1",
+  "version": "3.1.0",
   "description": "Minimal JavaScript templating.",
   "main": "dist/templater.js",
   "scripts": {
@@ -27,5 +27,8 @@
     "gulp-uglify": "^3.0.0",
     "jshint": "^2.9.2",
     "mocha": "5"
+  },
+  "overrides": {
+    "graceful-fs": "^4.2.11"
   }
 }

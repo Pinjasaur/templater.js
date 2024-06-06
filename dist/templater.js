@@ -1,5 +1,5 @@
 /*!
- * templater.js v3.0.1 - Minimal JavaScript templating.
+ * templater.js v3.1.0 - Minimal JavaScript templating.
  * On the web at https://pinjasaur.github.io/templater.js/
  * Written by Paul Esch-Laurent
  * Licensed under MIT
@@ -56,8 +56,19 @@
       }
     }
 
-    // return a function to use the replacement values
-    return function(data) {
+    /**
+		 * @param {Object} data An object whose keys match the replacement strings
+		 *   in your template
+		 * @param {Object} opts An optional object containing options to use during
+		 *   template string replacement
+		 * @return Function to use the replacement values
+		 */
+    return function(data, opts) {
+			if (opts === undefined) {
+				opts = {
+					autoescape: true
+				}
+			}
 
       // regex for the #if, body, /if
       var start = "{{\\s?#if\\s+(!)?\\((.+)\\)\\s?}}",
@@ -125,7 +136,9 @@
 
         // replace the instances in the template with the property value
         // (escaping characters if necessary)
-        template = template.replace(new RegExp(regex, "g"), value.replace(/[&<>"']/g, function(tag) {
+        template = template.replace(
+					new RegExp(regex, "g"), 
+					value.replace(/[&<>"']/g, function(tag) {
           // characters mapped to their entities
           var replacements = {
             "&": "&amp;",
@@ -135,7 +148,7 @@
             "'": "&#39;"
           };
 
-          return replacements[tag] || tag;
+          return !!opts.autoescape ? replacements[tag] || tag : tag;
         }));
       });
 
