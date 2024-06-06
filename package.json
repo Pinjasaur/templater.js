@@ -27,5 +27,8 @@
     "gulp-uglify": "^3.0.0",
     "jshint": "^2.9.2",
     "mocha": "5"
+  },
+  "overrides": {
+    "graceful-fs": "^4.2.11"
   }
 }
