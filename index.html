@@ -133,7 +133,7 @@ const data = { name: "Paul" }</code></pre>
 
         <pre><code>const tmpl = "Hi, I'm {{name}}"
 const data = { name: "&lt;Paul>" }
-templater(tmpl, { autoescape: false })(data) // Hi, I'm &lt;Paul></code></pre>
+templater(tmpl)(data, { autoescape: false }) // Hi, I'm &lt;Paul></code></pre>
       </p>
     </section>
     <section>
