@@ -41,7 +41,8 @@
 
       for (var prop in obj) {
 
-        if (typeof obj[prop] !== "object") {
+        // Need to check for a null literal since typeof null === "object"
+        if (typeof obj[prop] !== "object" || obj[prop] === null) {
           arr.push((ctx !== undefined) ? ctx + "." + prop : prop);
         } else {
           traverse(obj[prop], arr, (ctx !== undefined) ? ctx + "." + prop : prop);
@@ -51,18 +52,18 @@
     }
 
     /**
-		 * @param {Object} data An object whose keys match the replacement strings
-		 *   in your template
-		 * @param {Object} opts An optional object containing options to use during
-		 *   template string replacement
-		 * @return Function to use the replacement values
-		 */
+     * @param {Object} data An object whose keys match the replacement strings
+     * in your template
+     * @param {Object} opts An optional object containing options to use during
+     * template string replacement
+     * @return Function to use the replacement values
+     */
     return function(data, opts) {
-			if (opts === undefined) {
-				opts = {
-					autoescape: true
-				}
-			}
+      if (opts === undefined) {
+        opts = {
+          autoescape: true
+        }
+      }
 
       // regex for the #if, body, /if
       var start = "{{\\s?#if\\s+(!)?\\((.+)\\)\\s?}}",
@@ -126,13 +127,20 @@
 
         // get the value depending on type, casted to string
         var value = resolve(data, prop);
-        value = String((typeof value === "function") ? value() : value);
+        value = String(
+          // If it's a function, call it
+          (typeof value === "function") ? value() :
+          // If it's null literal (from the `resolve`), then empty string it
+          (value === null) ? "" :
+          // Else it's just the value
+          value
+        );
 
         // replace the instances in the template with the property value
         // (escaping characters if necessary)
         template = template.replace(
-					new RegExp(regex, "g"), 
-					value.replace(/[&<>"']/g, function(tag) {
+          new RegExp(regex, "g"),
+          value.replace(/[&<>"']/g, function(tag) {
           // characters mapped to their entities
           var replacements = {
             "&": "&amp;",
